@@ -29,14 +29,57 @@
         
         
         <div class="usuario  col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-            
+
           <div class="dropdown">
             <!-- imagen usuario -->
-            <button id="login1" class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><a href="login.html" target="_blank"><img src="{% static 'img/usuario.png' %}" width="40px"></a></button>
-            <ul class="dropdown-menu">
+            <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" aria-expanded="false"><img src="{% static 'img/usuario.png' %}" width="40px"></a>
+            </button>
+            <!-- <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="{% url 'login'%}">Iniciar sesion</a></li>
               <li><a class="dropdown-item" href="{% url 'registrarse'%}">Registrarse</a></li>
-            </ul>
+            </ul> -->
+            <!-- Modal -->
+            <div class="modal fade" class="mod_registro" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5 modal_R" id="exampleModalLabel">Registrarse</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- Registro -->
+                    <form action='' method="get" id="form"> 
+                      <div class="mb-3">
+                        <input type="text" id="nombre1" class="form-control" class="campo" placeholder="Nombre">
+                        <div id="mensaje1" class="errores">Dame tu nombre</div>
+                      </div>
+                      <div class="mb-3">
+                        <input type="email" id="correo" class="form-control" class="campo" placeholder="Correo">
+                        <div id="mensaje2" class="errores">Dame tu correo</div>
+                      </div>
+                      <div class="mb-3">
+                        <input type="password" id="contrasena1" class="form-control" class="campo" placeholder="Contraseña">
+                        <div id="mensaje3" class="errores">Dame tu contraseña</div>
+                      </div>
+                      <div class="mb-3">
+                        <input type="password" id="contrasena2" class="form-control" class="campo" placeholder="Confirmar contraseña"> 
+                        <div id="mensaje4" class="errores">Confirma tu contraseña</div>
+                      </div>
+                      <div class="d-flex align-items-center justify-content-center">
+                        <p class="check"><input type="checkbox" id="checkbox"> He leído y acepto los <a href="#">términos y condiciones</a></p>
+                      </div>
+                      <div class="submit">
+                        <input type="submit" class="boton" id="enviar"> 
+                        <div id="mensaje5" class="errores">Debe aceptar los términos</div><br> <br>
+                      </div>
+                      <div class="d-flex align-items-center justify-content-center">
+                        <a href="{% url 'login'%}" id="inicio_sesion">Ya tengo cuenta</a>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
             <!-- imagen carrito -->
             <a href="#">
               <button id="carrito1" type="button" class="btn" onclick="abrirCarrito()">
