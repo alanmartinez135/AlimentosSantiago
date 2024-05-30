@@ -1,0 +1,317 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Accesorios | PELUDOS SHOP®</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> <!--para iconos -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+    <link rel="website icon" type="png" href="{% static 'img/Logo peludos shop.png' %}" >
+    
+  </head>
+  <body>
+
+  <!-- CARRUSEL DE ARRIBA-->
+  <div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="img/DESCUENTO1.PNG" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="img/DESCUENTO1.PNG" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="img/DESCUENTO1.PNG" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!-- LOGO     BARRA DE BUSQUEDA      BARRA NAVEGACION-->
+  <div class="container-fluid" id="barra_principal">
+    <div class="row">
+        <div class="col-1 col-sm-1 col-md-1 col-lg-2 col-xl-1">
+          <!-- LOGO -->
+            <a href="inicio.html"><img class="logo" src="img/Logo peludos shop.png" alt="..." ></a>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-11">
+          <!-- BARRA DE BUSQUEDA -->
+          <nav class="navbar bg-body-tertiary" >
+            <form class="container-fluid">
+              <div class="input-group">
+                <input class="form-control me-2" type="search" placeholder="¿Qué buscas?" aria-label="Search">
+                <button class="btn btn-outline-" type="submit"><img src="img/lupa.png" width="30px" ></button>
+  
+                <div class="dropdown">
+                  <button id="carrito2" class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><a href="login.html" target="_blank"><img src="img/USUARIO.png" width="40px"></a>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="login.html">Iniciar sesion</a></li>
+                    <li><a class="dropdown-item" href="registrarse.html">Registrarse</a></li>
+                  </ul>
+                </div>
+  
+                <!-- CARRITO -->
+                <a href="#">
+                  <button id="carrito1" type="button" class="btn" onclick="abrirCarrito()"><img src="img/carrito pet.png" width="40px">
+                    <span id="cantidadCarrito" class="badge bg-danger rounded-pill">0</span>
+                  </button>
+                </a>
+                
+                <div class="modal fade" id="carritoModal" tabindex="-1" role="dialog" aria-labelledby="carritoModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="carritoModalLabel">Carrito de Compras</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="container">
+                          <div class="row">
+                            <div class="col-12">
+                              <div id="carrito-contenido"></div>
+                              <div id="carrito-total"></div>
+                              <hr>
+                                <button type="button" class="btn btn-secondary btn-pagar" data-bs-dismiss="modal">PAGAR</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+              </div>
+            </form>
+          </nav>
+        </div>
+
+        <!-- BARRA NAVEGACION -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <nav class="navbar navbar-expand-lg bg-body-tertiary ">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                  <li class="nav-item item_arriba">
+                    <a class="nav-link active" aria-current="page" href="inicio.html"><img src="img/icono2.png" width="30px">INICIO</a>
+                  </li>
+                  <li class="nav-item item_arriba">
+                    <a class="nav-link active" aria-current="page" href="perritos.html"><img src="img/perrito.png" width="30px">PERROS</a>
+                  </li>
+                  <li class="nav-item item_arriba">
+                    <a class="nav-link active" aria-current="page" href="gatitos.html"><img src="img/gatito.png" width="30px">GATOS</a>
+                  </li>
+                  <li class="nav-item item_arriba">
+                    <a class="nav-link active" aria-current="page" href="nosotros.html"><img src="img/icono3.png" width="30px">NOSOTROS</a>
+                  </li>
+                  <li class="nav-item item_arriba">
+                    <a class="nav-link active" aria-current="page" href="contacto.html"><img src="img/contacto.png" width="30px">CONTACTO</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+      </div>
+    </div>
+  </div> <!--container-fluid-->
+
+  
+  <div class="container" id="CCO">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+        <!-- IMAGEN DE CENTRADA ACCESORIOS-->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+            <img class="img-circulo-accesorio" src="img/accesorios.png" alt="" width="200px">
+            <p class="p-img-circulo"><h1>ACCESORIOS</h1></p>
+          </div>
+      </div> <!--div col-->
+
+
+      <!-- ACCESORIOS DE PERRO -->
+      <div class="col-12" id="OFERTAS">
+        <div class="container cont-cartas">
+          <h3>ACCESORIOS PARA TU MASCOTA</h3>
+          <div  id="contenedor-ofertas" class="row row-cols-1 row-cols-md-4 g-4">
+            <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
+              <div class="card h-100">
+                <img src="img/accesorio2.png" class="card-img-top producto-imagen" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Disfraz de Vaquero</h5>
+                  <p class="card-text">Disfraz de Vaquero para perros y gatos</p>
+                  <p class="producto-precio">$9.990</p>
+                </div>
+                <button type="button" class="btn btn-custom-purple producto-agregar" data-id="41">Agregar al carrito</button>
+              </div>
+            </div>
+            <div id="contenedor-ofertas" class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
+              <div class="card h-100">
+                <img src="img/accesorio1.png" class="card-img-top  producto-imagen" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Zapato Diseño Huellita</h5>
+                  <p class="card-text">Zapatos diseño huellita reflectantes y antideslizantes</p>
+                  <p class="producto-precio">$14.990</p>
+                </div>
+                <button type="button" class="btn btn-custom-purple producto-agregar" data-id="42">Agregar al carrito</button>
+              </div>
+            </div>
+            <div id="contenedor-ofertas" class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
+              <div class="card h-100">
+                <img src="img/accesorio3.png" class="card-img-top  producto-imagen" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Sombrero Safari Gatos y Perros</h5>
+                  <p class="card-text">Gorro safari es un accesorio funcional y práctico diseñado para proporcionar protección solar y comodidad </p>
+                  <p class="producto-precio">$16.090</p>
+                </div>
+                <button type="button" class="btn btn-custom-purple producto-agregar" data-id="43">Agregar al carrito</button>
+
+              </div>
+            </div>
+            <div id="contenedor-ofertas" class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
+              <div class="card h-100">
+                <img src="img/accesorio4.png" class="card-img-top  producto-imagen" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">M&P SWEATER EMMA</h5>
+                  <p class="card-text">Estiloso sweater para perros y gatos</p>
+                  <p class="producto-precio">$33.990</p>
+                </div>
+                  <button type="button" class="btn btn-custom-purple producto-agregar" data-id="44">Agregar al carrito</button>
+
+              </div>
+            </div>
+            <div id="contenedor-ofertas" class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
+              <div class="card h-100">
+                <img src="img/accesorio5.png" class="card-img-top  producto-imagen" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Club P&G Luz para Collar</h5>
+                  <p class="card-text">Resistente al agua y recargable por USB</p>
+                  <p class="producto-precio">$3.590</p>
+                </div>
+                <button type="button" class="btn btn-custom-purple producto-agregar" data-id="45">Agregar al carrito</button>
+
+              </div>
+            </div>
+            <div id="contenedor-ofertas" class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
+              <div class="card h-100">
+                <img src="img/accesorio6.png" class="card-img-top  producto-imagen" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">CHALECO TEJIDO PARA MASCOTA</h5>
+                  <p class="card-text">Chaleco con lindo diseño tejido con lana acrílica para mascota, por lo que es ajustable</p>
+                  <p class="producto-precio">$9.390</p>
+                </div>
+                <button type="button" class="btn btn-custom-purple producto-agregar" data-id="46">Agregar al carrito</button>
+
+              </div>
+            </div>
+            <div id="contenedor-ofertas" class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
+              <div class="card h-100">
+                <img src="img/accesorio7.png" class="card-img-top  producto-imagen" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">COLLAR TEJIDO DE CUERO PARA MASCOTAS</h5>
+                  <p class="card-text">Collar de cinta tejida cuero-algodón con hebilla de plástico y argolla de acero tipo D</p>
+                  <p class="producto-precio">$5.650</p>
+                </div>
+                <button type="button" class="btn btn-custom-purple producto-agregar" data-id="47">Agregar al carrito</button>
+
+              </div>
+            </div>
+            <div id="contenedor-ofertas" class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
+              <div class="card h-100">
+                <img src="img/accesorio8.png" class="card-img-top  producto-imagen" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Correa Para Perro Miniso</h5>
+                  <p class="card-text">Diseño en espiral con cuerda reforzada, detalle de asa y broche para ajustar en cuello.</p>
+                  <p class="producto-precio">$1.990</p>
+                </div>
+                <button type="button" class="btn btn-custom-purple producto-agregar" data-id="48">Agregar al carrito</button>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    
+    </div> <!--div row-->
+  </div> <!--div container-->
+
+
+    <!--   FOOTER   -->
+    <div class="footer">
+      <div class=" container">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+            <img src="img/Logo peludos shop.png" width="150px" alt="">
+          </div>
+          <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2">
+              <h5>AYUDA</h5>
+              <a href="preguntasFrecuentes.html">Preguntas frecuentes</a>
+              <a href="contacto.html">Contacto</a>
+          </div>
+          <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2">
+            <h5>LEGAL</h5>
+            <a href="">Términos y Condiciones</a>
+            <a href="">Política de privacidad</a>
+          </div>
+  
+          <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2">
+            <h5>FUNDACION</h5>
+            <a href="https://www.esperanzaanimal.cl/">Fundacion Esperanza Animal</a>
+  
+          </div>
+  
+          <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2">
+            <h5>SUSCRIPCIÓN</h5>
+            <a href="suscripcion.html">suscripción fundación</a>
+          </div>
+        </div>
+  
+      </div>
+          <div class="co-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+  
+            <div class="social-media">
+              <h5>Síguenos</h5>
+              <a target="blank" href="https://www.instagram.com/fundacionesperanzaanimalchile/" class="social-media-icon">
+                <i class='bx bxl-instagram' ></i>
+              </a>
+              <a target="blank" href="https://www.facebook.com/fundacionesperanzaanimalchile/" class="social-media-icon">
+                <i class='bx bxl-facebook'></i>
+              </a>
+              <a target="blank" href="https://www.youtube.com/channel/UCREiRMZ84M5yAPrKm4dPu-g" class="social-media-icon">
+                <i class='bx bxl-youtube'></i>
+              </a>
+            </div> 
+            
+          </div>
+        </div>
+  
+        
+        
+        
+        
+                  <!--   D RESERVADOS   -->
+              <div class="c-reservados">
+                &copy; 2024 Peludos Shop. Todos los derechos reservados
+                  <!--http://www.ascii.cl/htmlcodes.htm-->
+              </div>
+  <script src="{% static 'Js/carrito.js'%}"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>    
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

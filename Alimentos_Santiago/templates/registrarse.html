@@ -1,0 +1,335 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registro | PELUDOS SHOP®</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> <!--para iconos -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/estilo-registro.css'%}">
+    <link rel="website icon" type="png" href="{% static 'img/Logo peludos shop.png'%}">
+  </head>
+  <body>
+
+
+
+  <div class="container-fluid" id="barra_principal">
+    <div class="row">
+        <div class="col-1 col-sm-1 col-md-1 col-lg-2 col-xl-1">
+          <!-- LOGO -->
+            <a href="inicio.html"><img class="logo" src="img/Logo peludos shop.png" alt="..." ></a>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-11">
+          <!-- BARRA DE BUSQUEDA -->
+          <nav class="navbar bg-body-tertiary" >
+            <form class="container-fluid">
+              <div class="input-group">
+                <h1>REGISTRO DE USUARIO</h1>
+              </div>
+            </form>
+          </nav>
+        </div>
+                <!-- BARRA NAVEGACION --> 
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <nav class="navbar navbar-expand-lg bg-body-tertiary ">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                  <li class="nav-item item_arriba">
+                    <a class="nav-link active" aria-current="page" href="inicio.html"><img src="img/icono2.png" width="30px">PAGINA PRINCIPAL</a>
+                </ul>
+              </div>
+            </div>
+          </nav>
+      </div>
+    </div>
+  </div> <!--container-fluid-->
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="registro">
+          <form id="registroForm" class="row g-3">
+            <div class="col-md-4">
+              <label for="nombre" class="form-label">Nombres</label>
+              <input type="text" class="form-control" id="nombre" value="" required>
+            </div>
+            <div class="col-md-4">
+              <label for="apellido" class="form-label">Apellidos</label>
+              <input type="text" class="form-control" id="apellido" value="" required >
+            </div>
+            <div class="col-md-4">
+              <label for="Username" class="form-label">Username</label>
+              <div class="input-group">
+                <span class="input-group-text" id="inputGroupPrepend2"></span>
+                <input type="text" placeholder="juan123" class="form-control" id="Username" aria-describedby="inputGroupPrepend2" required>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="cuidad" class="form-label">Ciudad</label>
+              <select class="form-select" id="cuidad" required>
+                <option selected disabled value="">...</option>
+                <option>Angol
+                </option>
+                <option>Antofagasta
+              </option>
+                <option>Arica
+              </option>
+                <option>Calama
+              </option>
+                <option>Castro
+              </option>
+                <option>Cauquenes
+              </option>
+                <option>Chaitén
+              </option>
+                <option>Chañaral
+              </option>
+                <option>Chile Chico
+              </option>
+                <option>Chillán
+              </option>
+                <option>Cochrane
+              </option>
+                <option>Colina
+              </option>
+                <option>Concepción
+              </option>
+                <option>Copiapó
+              </option>
+                <option>Coquimbo
+              </option>
+                <option>Coyhaique
+              </option>
+                <option>Curicó
+              </option>
+                <option>Hanga Roa
+              </option>
+                <option>Illapel
+              </option>
+                <option>Iquique
+              </option>
+                <option>La Florida
+              </option>
+                <option>La Ligua
+              </option>
+                <option>La Serena
+              </option>
+                <option>La Unión
+              </option>
+                <option>Las Condes
+              </option>
+                <option>Lebu
+              </option>
+                <option>Linares
+              </option>
+                <option>Los Andes
+              </option>
+                <option>Los Ángeles
+              </option>
+                <option>Maipú
+              </option>
+                <option>Melipilla
+              </option>
+                <option>Osorno
+              </option>
+                <option>Ovalle
+              </option>
+                <option>Peñalolén
+              </option>
+                <option>Pichilemu
+              </option>
+                <option>Porvenir
+              </option>
+                <option>Pozo Almonte
+              </option>
+                <option>Puente Alto
+              </option>
+                <option>Puerto Aysén
+              </option>
+                <option>Puerto Montt
+              </option>
+                <option>Puerto Natales
+              </option>
+                <option>Puerto Williams
+              </option>
+                <option>Punta Arenas
+              </option>
+                <option>Putre
+              </option>
+                <option>Quillota
+              </option>
+                <option>Quilpué
+              </option>
+                <option>Rancagua
+              </option>
+                <option>San Antonio
+              </option>
+                <option>San Bernardo
+              </option>
+                <option>San Felipe
+              </option>
+                <option>San Fernando
+              </option>
+                <option>Santiago
+              </option>
+                <option>Talagante
+              </option>
+                <option>Talca
+              </option>
+                <option>Temuco
+              </option>
+                <option>Tocopilla
+              </option>
+                <option>Valdivia
+              </option>
+                <option>Vallenar
+              </option>
+                <option>Valparaíso
+              </option>
+                <option>Viña del Mar
+              </option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="regiones" class="form-label">Regiones</label>
+              <select class="form-select" id="regiones" required>
+                <option selected disabled value="">...</option>
+                <option>Región de Arica y Parinacota</option>
+                <option>Región de Tarapacá</option>
+                <option>Región de Antofagasta</option>
+                <option>Región de Atacama</option>
+                <option>Región de Coquimbo</option>
+                <option>Región de Valparaíso</option>
+                <option>Región del Libertador General Bernardo O'Higgins</option>
+                <option>Región del Maule</option>
+                <option>Región de Ñuble</option>
+                <option>Región del Biobío</option>
+                <option>Región de La Araucanía</option>
+                <option>Región de Los Ríos</option>
+                <option>Región de Los Lagos</option>
+                <option>Región de Aisén del G. Carlos Ibáñez del Campo</option>
+                <option>Región de Magallanes y de la Antártica Chilena</option>
+                <option>Región Metropolitana de Santiago</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="Email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="Email" required>
+            </div>
+            <div class="col-md-6">
+              <label for="contrasena" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" id="contrasena" required>
+            </div>
+            <div class="col-md-12">
+              <label for="direccion" class="form-label">Direccion</label>
+              <input type="text" class="form-control" id="direccion" value="" required>
+            </div>
+            <div class="col-12">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+                <label class="form-check-label" for="invalidCheck2">
+                  Aceptar términos y condiciones
+                </label>
+              </div>
+            </div>
+            <div class="col-4">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Terminos y condiciones
+              </button>
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                      Estos son los terminos y condiciones aceptalos ahora
+                      </div>
+                      <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      </div>
+                  </div>
+                  </div>
+              </div>
+          </div>
+            <div class="col-12">
+              <button class="btn btn-primary" type="submit">Registrar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+    
+  <!--   FOOTER   -->
+  <div class="footer">
+    <div class=" container">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+          <img src="img/Logo peludos shop.png" width="150px" alt="">
+        </div>
+        <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2">
+            <h5>AYUDA</h5>
+            <a href="preguntasFrecuentes.html">Preguntas frecuentes</a>
+            <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2">
+          <h5>LEGAL</h5>
+          <a href="">Términos y Condiciones</a>
+          <a href="">Política de privacidad</a>
+        </div>
+
+        <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2">
+          <h5>FUNDACION</h5>
+          <a href="https://www.esperanzaanimal.cl/">Fundacion Esperanza Animal</a>
+
+        </div>
+
+        <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2">
+          <h5>SUSCRIPCIÓN</h5>
+          <a href="suscripcion.html">suscripción fundación</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="co-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+
+      <div class="social-media">
+        <h5>Síguenos</h5>
+        <a target="blank" href="https://www.instagram.com/fundacionesperanzaanimalchile/" class="social-media-icon">
+          <i class='bx bxl-instagram' ></i>
+        </a>
+        <a target="blank" href="https://www.facebook.com/fundacionesperanzaanimalchile/" class="social-media-icon">
+          <i class='bx bxl-facebook'></i>
+        </a>
+        <a target="blank" href="https://www.youtube.com/channel/UCREiRMZ84M5yAPrKm4dPu-g" class="social-media-icon">
+          <i class='bx bxl-youtube'></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+        <!--   D RESERVADOS   -->
+    <div class="c-reservados">
+      &copy; 2024 Peludos Shop. Todos los derechos reservados
+        <!--http://www.ascii.cl/htmlcodes.htm-->
+    </div>
+ 
+    <script src="{% static 'Js/validaciones.js'%}"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

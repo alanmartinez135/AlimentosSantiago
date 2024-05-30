@@ -1,0 +1,238 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nosotros | PELUDOS SHOP®</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> <!--para iconos -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+    <link rel="website icon" type="png" href="{% static 'img/Logo peludos shop.png' %}" >
+    
+  </head>
+  <body>
+
+  <!-- CARRUSEL DE ARRIBA-->
+  <div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="img/DESCUENTO1.PNG" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="img/DESCUENTO1.PNG" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="img/DESCUENTO1.PNG" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+
+
+  <!-- LOGO     BARRA DE BUSQUEDA      BARRA NAVEGACION-->
+  <div class="container-fluid" id="barra_principal">
+    <div class="row">
+        <div class="col-1 col-sm-1 col-md-1 col-lg-2 col-xl-1">
+          <!-- LOGO -->
+            <a href="inicio.html"><img class="logo" src="img/Logo peludos shop.png" alt="..." ></a>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-11">
+
+          <!-- BARRA DE BUSQUEDA -->
+          <nav class="navbar bg-body-tertiary" >
+            <form class="container-fluid">
+              <div class="input-group">
+                <input id="lupa" class="form-control me-2" type="search" placeholder="¿Qué buscas?" aria-label="Search">
+                <button class="btn btn-outline-" type="submit"><img src="img/lupa.png" width="30px" ></button>
+
+                <div class="dropdown">
+                  <button id="carrito2" class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><a href="login.html" target="_blank"><img src="img/USUARIO.png" width="40px"></a>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="login.html">Iniciar sesion</a></li>
+                    <li><a class="dropdown-item" href="registrarse.html">Registrarse</a></li>
+                  </ul>
+                </div>
+              </div>
+            </form>
+          </nav>
+        </div>
+
+        <!-- BARRA NAVEGACION -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <nav class="navbar navbar-expand-lg bg-body-tertiary ">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+                      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                          <li class="nav-item item_arriba">
+                            <a class="nav-link active" aria-current="page" href="inicio.html"><img src="img/icono2.png" width="30px">INICIO</a>
+                          </li>
+                          <li class="nav-item item_arriba">
+                            <a class="nav-link active" aria-current="page" href="perritos.html"><img src="img/perrito.png" width="30px">PERROS</a>
+                          </li>
+                          <li class="nav-item item_arriba">
+                            <a class="nav-link active" aria-current="page" href="gatitos.html"><img src="img/gatito.png" width="30px">GATOS</a>
+                          </li>
+                          <li class="nav-item item_arriba">
+                            <a class="nav-link active" aria-current="page" href="nosotros.html"><img src="img/icono3.png" width="30px">NOSOTROS</a>
+                          </li>
+                          <li class="nav-item item_arriba">
+                            <a class="nav-link active" aria-current="page" href="contacto.html"><img src="img/contacto.png" width="30px">CONTACTO</a>
+                          </li>
+                        </ul>
+                      </div>
+            </div>
+          </nav>
+      </div>
+    </div>
+  </div> <!--container-fluid-->
+
+
+
+
+
+
+  <!--   SOBRE NOSOTROS   -->
+<div class="container cont-about-us" style="background-image: url(img/fondoAboutUs.png);">
+    <h2 id="titulo" style="text-align: center;">SOBRE NOSOTROS</h2>
+</div>
+
+<div class="container">
+  <div class="row">
+        
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
+          <h1 style="font-weight: bold;">Nuestra historia</h1>
+          <h6 style="line-height: 30px; text-shadow: 2px 10px 7px #8e8aba;">Un grupo de amigas apasionadas por los animales dio vida a nuestra tienda de accesorios para mascotas en 2020. Inicialmente, comenzamos modestamente en las redes sociales, ofreciendo productos hechos a mano con amor y dedicación, como bandanas, correas e identificaciones. Nuestro compromiso con una causa noble llevó al éxito de nuestro emprendimiento. Al asociarnos con la ONG "Ayuda a un Peludo", destinamos parte de nuestras ganancias para brindar atención médica, alimento y refugio a animales rescatados. Cada venta representa una contribución significativa para nuestros amigos peludos necesitados. Con el tiempo, hemos crecido y ahora contamos con una plataforma web que nos permite llegar a más clientes y promover nuestros productos de manera eficiente. Sin embargo, más allá de las ventas, nuestra principal motivación es marcar la diferencia en la vida de los animales abandonados y promover la adopción responsable.</h2>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+          <img class="img-about-us " style="margin-left: 100px;" src="img/fundacion3.jpg">
+        </div>
+    
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            <img class="img-about-us" src="img/fundacion2.jpg">
+        </div>
+            
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+          <h1 style="font-weight: bold; text-align: right;">Nuestra misión</h1>
+          <h6 style="line-height: 30px; text-shadow: 2px 10px 7px #8e8aba">
+            En nuestra tienda de accesorios para mascotas, tenemos una misión clara: ofrecer productos de calidad y al mismo tiempo, apoyar a la ONG "Ayuda a un Peludo" en su labor de rescate, rehabilitación y adopción de animales abandonados.
+            Nos apasiona la idea de que cada compra realizada en nuestra tienda contribuya a darle una segunda oportunidad a un perro o gato sin hogar. Queremos ser parte de la solución al problema del abandono animal y crear conciencia sobre la importancia de la tenencia responsable de mascotas.
+            Además de nuestros productos, nos esforzamos por promover los valores de compasión, respeto y amor hacia todos los animales. Creemos que cada ser vivo merece ser tratado con dignidad y cariño, y trabajamos incansablemente para construir una comunidad más sensible y comprometida con el bienestar animal.
+          </h6>
+        </div>
+
+        
+        <!--VIDEO-->
+        <div class="col-12 col-sm-12 col-md-9 col-lg-6 col-xl-6">
+
+          <div class="ratio ratio-16x9" >
+            <h1 style="font-weight: bold; text-align: center;">Apoyamos la adopción</h1>
+            <iframe src="img/Video PETS.mp4" title="Video" allowfullscreen></iframe>
+          </div>
+          
+            
+        </div>
+        
+        <div class="col-12 col-sm-12 col-md-9 col-lg-6 col-xl-6">
+          <h1 style="font-weight: bold; text-align: center;">Fundacion Esperanza Animal</h1>
+          <div class="row g-0 bg-body-secondary position-relative">
+            
+            <div class="col-md-6 mb-md-0 p-md-4">
+              <img src="img/Fundacion-Esperanza animal.png" class="w-100" alt="...">
+            </div>
+            <div class="col-md-6 p-4 ps-md-0">
+              <h5 class="mt-0">FUNDACION</h5>
+              <p>Fundación Esperanza Animal es una organización sin fines de lucro que se forma con el objetivo de mejorar la calidad de vida de las mascotas abandonadas o nacidas en la calle y a la vez disminuir la sobrepoblación a través de la educación y concientizar sobre la temática de Tenencia Responsable en nuestro país.</p>
+              <a href="https://www.esperanzaanimal.cl/" class="stretched-link">Ayuda sin adoptar</a>
+            </div>
+            
+          </div>
+        </div>
+    </div>
+    
+  </div>
+</div>
+
+
+
+    <!--   FOOTER   -->
+    <div class="footer">
+      <div class=" container">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+            <img src="img/Logo peludos shop.png" width="150px" alt="">
+          </div>
+          <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2">
+              <h5>AYUDA</h5>
+              <a href="preguntasFrecuentes.html">Preguntas frecuentes</a>
+              <a href="contacto.html">Contacto</a>
+          </div>
+          <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2">
+            <h5>LEGAL</h5>
+            <a href="">Términos y Condiciones</a>
+            <a href="">Política de privacidad</a>
+          </div>
+  
+          <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2">
+            <h5>FUNDACION</h5>
+            <a href="https://www.esperanzaanimal.cl/">Fundacion Esperanza Animal</a>
+  
+          </div>
+  
+          <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2">
+            <h5>SUSCRIPCIÓN</h5>
+            <a href="suscripcion.html">suscripción fundación</a>
+          </div>
+        </div>
+  
+      </div>
+          <div class="co-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+  
+            <div class="social-media">
+              <h5>Síguenos</h5>
+              <a target="blank" href="https://www.instagram.com/fundacionesperanzaanimalchile/" class="social-media-icon">
+                <i class='bx bxl-instagram' ></i>
+              </a>
+              <a target="blank" href="https://www.facebook.com/fundacionesperanzaanimalchile/" class="social-media-icon">
+                <i class='bx bxl-facebook'></i>
+              </a>
+              <a target="blank" href="https://www.youtube.com/channel/UCREiRMZ84M5yAPrKm4dPu-g" class="social-media-icon">
+                <i class='bx bxl-youtube'></i>
+              </a>
+            </div>
+          </div>
+        </div>
+  
+
+
+
+
+          <!--   D RESERVADOS   -->
+      <div class="c-reservados">
+        &copy; 2024 Peludos Shop. Todos los derechos reservados
+          <!--http://www.ascii.cl/htmlcodes.htm-->
+      </div>
+
+
+      <script src="{% static 'Js/carrito.js'%}"></script>
+      <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>
