@@ -29,9 +29,6 @@ def alimentos(request):
 def camas(request):
     return render(request, 'camas.html')
 
-
-
-
 def identificador(request):
     return render(request, 'identificador.html')
 
