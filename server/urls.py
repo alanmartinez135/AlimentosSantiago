@@ -18,11 +18,12 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from Alimentos_Santiago.views import login, registrarse, perritos, gatitos, contacto, accesorios, alimentos, camas, identificador, nosotros, preguntasFrecuentes, suscripcion
+from Alimentos_Santiago.views import login, registrarse, perritos, gatitos, contacto, accesorios, alimentos, camas, identificador, nosotros, preguntasFrecuentes, suscripcion, inicio
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("Alimentos_Santiago.urls")),
+    path('inicio/', inicio, name='inicio'),
     path('login/', login, name='login'),
     path('registrarse/', registrarse, name='registrarse'),
     path('perritos/', perritos, name='perritos'),

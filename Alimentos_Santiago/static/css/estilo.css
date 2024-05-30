@@ -415,3 +415,35 @@ h2{
 .navbar{
   margin-top: 20px;
 } */
+
+/* Registro */
+.modal-content{
+  background-color: white;
+}
+
+.modal_R{
+  color: #195474;
+}
+
+.boton{
+  width: 30%;
+  background-color: #195474;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  margin-left: 35%;
+} 
+
+.errores{
+  background: red;
+  color: #fff;
+  display: none;
+  font-size: 14px;
+  margin-top: -80px;
+  margin-left: 340px;
+  padding: 10px;
+  position: absolute;
+}
+span{
+  color: red;
+}
