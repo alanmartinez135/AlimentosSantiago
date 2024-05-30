@@ -10,8 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
-    <link rel="website icon" type="png" href="{% static 'img/Logo peludos shop.png' %}" >
+    <link rel="stylesheet" href="{% static '/css/estilo.css' %}">
+    <link rel="website icon" type="png" href="{% static 'img/Logo.png' %}" >
   </head>
   <body>
 
@@ -112,9 +112,6 @@
             </div>
           </div>
         </div>
-     
-       
-      
       <!-- BARRA NAVEGACION -->
       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <nav id="navbar" class="navbar navbar-expand-lg bg-body-tertiary ">
@@ -147,7 +144,6 @@
     </div>
   </div> <!--container-fluid-->
 
-  
   <div class="plato-del-dia">
     <div class="plato">
       <h1 class="plato1">Plato del día</h1>
@@ -158,15 +154,18 @@
         <img  src="{% static 'img/pastel-de-papas.jpg'%}" alt="" >
     </div>
   </div>
+ 
 
   
-        <!-- CARUUSEL DE ABAJO    CIRCULOS     OFERTAS    BOTON SUSCRIBETE-->
+  <!-- CARUUSEL -->
   <div class="container" id="CCO">
+    <hr>
     <div class="row">
       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <!-- CARUUSEL -->
         <div class="lo-mas-vendido">
-          <h1>Lo mas vendido</h1>
+          <h1>Lo más vendido</h1>
+          <hr>
         </div>
         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
@@ -175,20 +174,20 @@
               
               <div class="row row-cols-1 row-cols-md-2 g-4">
                 <div class="col">
-                  <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
+                  <div class="card ">
+                    <img src="{% static 'img/palta-rellena-con-pollo.jpg'%}" class="card-img-top img-carrusel1" alt="...">
                     <div class="card-body">
                       <h5 class="card-title">Almuerzo tal</h5>
-                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, soluta?</p>
                     </div>
                   </div>
                 </div>
                 <div class="col">
                   <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
+                    <img src="{% static 'img/Salmon-al-horno-con-papas-100x565-1.jpg'%}" class="card-img-top img-carrusel1" alt="...">
                     <div class="card-body">
                       <h5 class="card-title">Almuerzo tal</h5>
-                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, soluta?</p>
                     </div>
                   </div>
                 </div>
@@ -201,19 +200,19 @@
               <div class="row row-cols-1 row-cols-md-2 g-4">
                 <div class="col">
                   <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
+                    <img src="{% static 'img/cazuela-1140x760.png'%}" class="card-img-top img-carrusel1" alt="...">
                     <div class="card-body">
                       <h5 class="card-title">Almuerzo tal</h5>
-                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, soluta?</p>
                     </div>
                   </div>
                 </div>
                 <div class="col">
                   <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
+                    <img src="{% static 'img/chuletas-de-cerdo-asadas.jpg'%}" class="card-img-top img-carrusel1" alt="...">
                     <div class="card-body">
                       <h5 class="card-title">Almuerzo tal</h5>
-                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, soluta?</p>
                     </div>
                   </div>
                 </div>
@@ -225,7 +224,7 @@
               <div class="row row-cols-1 row-cols-md-2 g-4">
                 <div class="col">
                   <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
+                    <img src="{% static 'img/Receta-de-Fideos-con-Salsa.jpg'%}" class="card-img-top img-carrusel1" alt="...">
                     <div class="card-body">
                       <h5 class="card-title">Almuerzo tal</h5>
                       <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -234,7 +233,7 @@
                 </div>
                 <div class="col">
                   <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
+                    <img src="{% static 'img/sopa.jpg'%}" class="card-img-top img-carrusel1" alt="...">
                     <div class="card-body">
                       <h5 class="card-title">Almuerzo tal</h5>
                       <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -256,36 +255,31 @@
           </button>
         </div>
       </div> <!--div col-->
-      </div> <!--div row-->
-    </div> <!--div container-->
+    </div> <!--div row-->
+  </div> <!--div container-->
+
+  <div class="container" id="CCO">
+    <div class="vermas-arriba-circulos">
+      <button class="btn btn-custom-purple " ><a href="">Ver mas</a></button> 
     </div>
-  </div>
-</div>
-    <div class="container" id="CCO">
-      <div class="vermas-arriba-circulos">
-        <button class="btn btn-custom-purple " ><a href="">Ver mas</a></button> 
-
-
-      </div>
-      <div class="row">
-      <!-- CIRCULOS  -->
+    <div class="row">
+      <!-- CIRCULOS  --> 
       <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3 text-center">
-        <a href="{% url 'accesorios'%}"><img class="img-circulo" src="{% static 'img/accesorios.png'%}" alt="" width="200px"></a>
-        <p class="p-img-circulo"><a href="{% url 'accesorios'%}">COMIDAS</a></p>
+        <a href="{% url 'accesorios'%}"><img class="img-circulo" src="{% static 'img/comida-tipica-chilena.jpg'%}" alt="" width="200px"></a>
+        <p class="p-img-circulo"><a href="{% url 'accesorios'%}">CHILE</a></p>
       </div>
       <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3 text-center">
-          <a href="{% url 'camas'%}"><img class="img-circulo" src="{% static 'img/cama-perros-gatos.png'%}" alt="" width="200px"></a>
-          <p class="p-img-circulo"><a href="{% url 'camas'%}">COMIDAS</a></p>
+          <a href="{% url 'camas'%}"><img class="img-circulo" src="{% static 'img/comida-china.jpg'%}" alt="" width="200px"></a>
+          <p class="p-img-circulo"><a href="{% url 'camas'%}">CHINA</a></p>
       </div>
       <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3 text-center">
-          <a href="{% url 'identificador'%}"><img class="img-circulo" src="{% static 'img/identificador.png'%}" alt="" width="200px"></a>
-          <p class="p-img-circulo"><a href="{% url 'identificador'%}">COMIDAS</a></p>
+          <a href="{% url 'identificador'%}"><img class="img-circulo" src="{% static 'img/comida-peruana.jpg'%}"alt="" width="200px"></a>
+          <p class="p-img-circulo"><a href="{% url 'identificador'%}">PERU</a></p>
       </div>
       <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3 text-center">
-          <a href="{% url 'alimentos'%}"><img class="img-circulo" src="{% static 'img/alimentos.png'%}" alt="" width="200px"></a>
-          <p class="p-img-circulo"><a href="{% url 'alimentos'%}">COMIDAS</a></p>
+          <a href="{% url 'alimentos'%}"><img class="img-circulo" src="{% static 'img/comida-japonesa.jpg'%}" alt="" width="200px"></a>
+          <p class="p-img-circulo"><a href="{% url 'alimentos'%}">JAPON</a></p>
       </div>
-
 
             <!-- BOTON SUSCRIBETE -->
       <button type="button" class="btn btn-custom-purple boton-morado" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -293,7 +287,7 @@
       </button>
 
       <!-- Modal BOTON SUSCRIBETE -->
-      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"    aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -323,7 +317,7 @@
 
             <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
               <div class="card h-100">
-                <img src="{% static 'img/producto1.jpg'%}" class="card-img-top producto-imagen" alt="...">
+                <img src="{% static 'img/1366_2000 (1).jpg'%}" class="card-img-top producto-imagen" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">ALMUERZO</h5>
                   <p class="card-text">Escribir la descripcion aqui</p>
@@ -335,7 +329,7 @@
             
             <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
               <div class="card h-100">
-                <img src="{% static 'img/producto2.png'%}" class="card-img-top producto-imagen" alt="...">
+                <img src="{% static 'img/1366_2000.jpg'%}" class="card-img-top producto-imagen" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">ALMUERZO</h5>
                   <p class="card-text">Escribir la descripcion aqui</p>
@@ -346,7 +340,7 @@
             </div>
             <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
               <div class="card h-100">
-                <img src="{% static 'img/producto3.png'%}" class="card-img-top producto-imagen" alt="...">
+                <img src="{% static 'img/8989c8faf3fc4093f3bc63eacee40187.jpeg'%}" class="card-img-top producto-imagen" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">ALMUERZO</h5>
                   <p class="card-text">Escribir la descripcion aqui</p>
@@ -357,7 +351,7 @@
             </div>
             <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
               <div class="card h-100">
-                <img src="{% static 'img/producto4.png'%}" class="card-img-top producto-imagen" alt="...">
+                <img src="{% static 'img/cazuela-1140x760.png'%}" class="card-img-top producto-imagen" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">ALMUERZO</h5>
                   <p class="card-text">Escribir la descripcion aqui</p>
@@ -368,7 +362,7 @@
             </div>
             <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
               <div class="card h-100">
-                <img src="{% static 'img/producto5.jpg'%}" class="card-img-top producto-imagen" alt="...">
+                <img src="{% static 'img/chuletas-de-cerdo-asadas.jpg'%}" class="card-img-top producto-imagen" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">ALMUERZO</h5>
                   <p class="card-text">Escribir la descripcion aqui</p>
@@ -379,7 +373,7 @@
             </div>
             <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
               <div class="card h-100">
-                <img src="{% static 'img/producto6.jpg'%}" class="card-img-top producto-imagen" alt="...">
+                <img src="{% static 'img/grilled-lemon-herb-chicken.jpg'%}" class="card-img-top producto-imagen" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">ALMUERZO</h5>
                   <p class="card-text">Escribir la descripcion aqui</p>
@@ -388,29 +382,6 @@
                 <button type="button" class="btn btn-custom-purple producto-agregar" data-id="6"> Agregar al carrito</button>
               </div>
             </div>
-            <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-              <div class="card h-100">
-                <img src="{% static 'img/producto7.png'%}" class="card-img-top producto-imagen" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">ALMUERZO</h5>
-                  <p class="card-text">Escribir la descripcion aqui</p>
-                  <p class="producto-precio">$3.990 </p>
-                </div>
-                <button type="button" class="btn btn-custom-purple producto-agregar" data-id="7"> Agregar al carrito</button>
-              </div>
-            </div>
-            <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-              <div class="card h-100">
-                <img src="{% static 'img/producto8.jpg'%}" class="card-img-top producto-imagen" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">ALMUERZO</h5>
-                  <p class="card-text">Escribir la descripcion aqui</p>
-                  <p class="producto-precio">$21.990</p>
-                </div>
-                <button type="button" class="btn btn-custom-purple producto-agregar" data-id="8"> Agregar al carrito</button>
-              </div>
-            </div>
-
           </div>
         </div>
       </div>
@@ -446,100 +417,110 @@
     </div> <!--div row-->
   </div> <!--div container-->
 
-  <!-- CARUUSEL DE ABAJO    CIRCULOS     OFERTAS    BOTON SUSCRIBETE-->
+  <!-- CARUUSEL DE ABAJO-->
   <div class="container" id="CCO">
     <div class="row">
       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <!-- CARUUSEL -->
+        <!-- CARUUSEL COMENTARIOS CLIENTES-->
         <div class="lo-mas-vendido">
           <h1>Comentarios de los clientes</h1>
         </div>
-        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
-            
-            <div class="carousel-item active">
-              
-              <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="carousel-item active" data-bs-interval="4000">
+              <div class="row row-cols-1 row-cols-md-3 g-4">
                 <div class="col">
-                  <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
+                  <div class="card h-100">
                     <div class="card-body">
-                      <h5 class="card-title">Almuerzo tal</h5>
-                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      <h5 class="card-title">Comentarios</h5>
+                      <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, soluta?</p>
                     </div>
                   </div>
                 </div>
                 <div class="col">
-                  <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
+                  <div class="card h-100">
                     <div class="card-body">
-                      <h5 class="card-title">Almuerzo tal</h5>
-                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      <h5 class="card-title">Comentarios</h5>
+                      <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, soluta?</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card h-100">
+                    <div class="card-body">
+                      <h5 class="card-title">Comentarios</h5>
+                      <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, soluta?</p>
                     </div>
                   </div>
                 </div>
               </div>
-
-
             </div>
-            <div class="carousel-item">
-
-              <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="carousel-item" data-bs-interval="4000">
+              <div class="row row-cols-1 row-cols-md-3 g-4">
                 <div class="col">
-                  <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
+                  <div class="card h-100">
                     <div class="card-body">
-                      <h5 class="card-title">Almuerzo tal</h5>
-                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      <h5 class="card-title">Comentarios</h5>
+                      <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, soluta?</p>
                     </div>
                   </div>
                 </div>
                 <div class="col">
-                  <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
+                  <div class="card h-100">
                     <div class="card-body">
-                      <h5 class="card-title">Almuerzo tal</h5>
-                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      <h5 class="card-title">Comentarios</h5>
+                      <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, soluta?</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card h-100">
+                    <div class="card-body">
+                      <h5 class="card-title">Comentarios</h5>
+                      <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, soluta?</p>
                     </div>
                   </div>
                 </div>
               </div>
-
             </div>
-            <div class="carousel-item">
-
-              <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="carousel-item" data-bs-interval="4000">
+              <div class="row row-cols-1 row-cols-md-3 g-4">
                 <div class="col">
-                  <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
+                  <div class="card h-100">
                     <div class="card-body">
-                      <h5 class="card-title">Almuerzo tal</h5>
-                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      <h5 class="card-title">Comentarios</h5>
+                      <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, soluta?</p>
                     </div>
                   </div>
                 </div>
                 <div class="col">
-                  <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
+                  <div class="card h-100">
                     <div class="card-body">
-                      <h5 class="card-title">Almuerzo tal</h5>
-                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      <h5 class="card-title">Comentarios</h5>
+                      <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, soluta?</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card h-100">
+                    <div class="card-body">
+                      <h5 class="card-title">Comentarios</h5>
+                      <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, soluta?</p>
                     </div>
                   </div>
                 </div>
               </div>
-
-
             </div>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
+        </div>
         </div>
       </div> <!--div col-->
       </div> <!--div row-->
@@ -548,12 +529,13 @@
   </div>
 </div>
 
+
 <!--   FOOTER   -->
 <div class="footer">
   <div class=" container">
     <div class="row">
       <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
-        <img src="{% static 'img/Logo peludos shop.png'%}" width="150px" alt="">
+        <img src="{% static 'img/Logo.png'%}" width="150px" alt="">
       </div>
       <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2">
           <h5>AYUDA</h5>
@@ -583,13 +565,13 @@
 
     <div class="social-media">
       <h5>Síguenos</h5>
-      <a target="blank" href="https://www.instagram.com/fundacionesperanzaanimalchile/" class="social-media-icon">
+      <a target="blank" href="#" class="social-media-icon">
         <i class='bx bxl-instagram' ></i>
       </a>
-      <a target="blank" href="https://www.facebook.com/fundacionesperanzaanimalchile/" class="social-media-icon">
+      <a target="blank" href="#" class="social-media-icon">
         <i class='bx bxl-facebook'></i>
       </a>
-      <a target="blank" href="https://www.youtube.com/channel/UCREiRMZ84M5yAPrKm4dPu-g" class="social-media-icon">
+      <a target="blank" href="#" class="social-media-icon">
         <i class='bx bxl-youtube'></i>
       </a>
     </div>

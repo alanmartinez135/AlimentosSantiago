@@ -78,7 +78,7 @@
 .lo-mas-vendido h1{
   text-align: center;
   margin-top: 25px;
-  margin-bottom: 25px;
+  margin-bottom: 45px;
 }
 
 .vermas-arriba-circulos{
@@ -111,13 +111,15 @@
    .color5 {color: #E2EAEE;} */
 
 
-
-
-
 /* BORDE DEL CARRUSEL */
 .carousel-inner{
   border-radius: 10px;
 }
+.img-carrusel1{
+  width: 100%;
+  height: 350px;
+}
+
 
 /* LOS CIRCULOS PARA LAS FOTOS DE INICIO*/
 .img-circulo{
