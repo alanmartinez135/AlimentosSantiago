@@ -131,9 +131,6 @@
                   <a class="nav-link active" aria-current="page" href="{% url 'gatitos' %}"><img src="{% static 'img/icono2.png'%}" width="30px">MENU DIARIO</a>
                 </li>
                 <li class="nav-item item_arriba">
-                  <a class="nav-link active" aria-current="page" href="#NOSOTROS"><img src="{% static 'img/icono3.png'%}" width="30px">NOSOTROS</a>
-                </li>
-                <li class="nav-item item_arriba">
                   <a class="nav-link active" aria-current="page" href="{% url 'contacto' %}"><img src="{% static 'img/contacto.png'%}" width="30px">CONTACTO</a>
                 </li>
               </ul>
@@ -407,35 +404,6 @@
           </div>
         </div>
       </div>
-      <!-- BOTON NOSOTROS -->
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-custom-purple boton-morado" data-bs-toggle="modal" data-bs-target="#exampleModal" id="NOSOTROS">
-        NOSOTROS
-      </button>
-          <!-- Modal -->
-      <div class="modal fade modal-nosotros" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">PELUDOS SHOP</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <span> Comprometidos con el Bienestar Animal</span>
-              <br><br>
-              <span> En nuestra fundación, nos dedicamos apasionadamente a mejorar la calidad de vida de los perros y gatos más necesitados. Con un equipo dedicado de voluntarios y profesionales, nos esforzamos por brindarles amor, cuidado y atención adecuada.</span>
-              <br><br>
-              <span>
-                Si quieres saber mas de nosotros presiona "Mas informacion"
-              </span>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-secondary boton-suscripcion"><a href="{% url 'nosotros'%}">Mas informacion</a></button>
-            </div>
-          </div>
-        </div>
-      </div>
     </div> <!--div row-->
   </div> <!--div container-->
 
@@ -572,6 +540,7 @@
           <h5>AYUDA</h5>
           <a href="{% url 'preguntasFrecuentes'%}">Preguntas frecuentes</a>
           <a href="{% url 'contacto'%}">Contacto</a>
+          <a href="{% url 'nosotros'%}">Nosotros</a>
       </div>
       <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2">
         <h5>LEGAL</h5>
