@@ -24,6 +24,8 @@ botonesAgregarAlCarrito.forEach((boton) => {
   });
 });
 
+
+
 // Función para actualizar el contenido del carrito en la página
 function actualizarCarrito() {
   const carritoContenido = document.getElementById("carrito-contenido");
@@ -69,6 +71,7 @@ function agregarAlCarrito(producto) {
   guardarCarritoEnLocalStorage();
   actualizarContadorCarrito();
   actualizarCarrito();
+  
 }
 
 //  boton click para pagar 

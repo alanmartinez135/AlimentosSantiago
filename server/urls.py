@@ -18,22 +18,19 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from Alimentos_Santiago.views import login, registrarse, perritos, gatitos, contacto, accesorios, alimentos, camas, identificador, nosotros, preguntasFrecuentes, suscripcion, inicio
+from Alimentos_Santiago.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("Alimentos_Santiago.urls")),
     path('inicio/', inicio, name='inicio'),
     path('login/', login, name='login'),
-    path('registrarse/', registrarse, name='registrarse'),
-    path('perritos/', perritos, name='perritos'),
-    path('gatitos/', gatitos, name='gatitos'),
-    path('contacto/', contacto, name='contacto'),
-    path('accesorios/', accesorios, name='accesorios'),
-    path('alimentos/', alimentos, name='alimentos'),
-    path('camas/', camas, name='camas'),
-    path('identificador/', identificador, name='identificador'),
+    path('menu/', menu, name='menu'),
+    path('chile/', chile, name='chile'),
+    path('italia/', italia, name='italia'),
+    path('china/', china, name='china'),
+    path('peru/', peru, name='peru'),
     path('nosotros/', nosotros, name='nosotros'),
     path('preguntasFrecuentes/', preguntasFrecuentes, name='preguntasFrecuentes'),
-    path('suscripcion/', suscripcion, name='suscripcion'),
+
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

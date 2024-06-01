@@ -4,101 +4,130 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Nosotros | PELUDOS SHOP®</title>
+    <title> | Santiago Alimentos®</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> <!--para iconos -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
-    <link rel="website icon" type="png" href="{% static 'img/Logo peludos shop.png' %}" >
-    
+    <link rel="stylesheet" href="{% static '/css/estilo.css' %}">
+    <link rel="website icon" type="png" href="{% static 'img/Logo.png' %}" >
   </head>
   <body>
-
-  <!-- CARRUSEL DE ARRIBA-->
-  <div id="carouselExample" class="carousel slide">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="img/DESCUENTO1.PNG" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="img/DESCUENTO1.PNG" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="img/DESCUENTO1.PNG" class="d-block w-100" alt="...">
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-
-
-
 
   <!-- LOGO     BARRA DE BUSQUEDA      BARRA NAVEGACION-->
   <div class="container-fluid" id="barra_principal">
     <div class="row">
-        <div class="col-1 col-sm-1 col-md-1 col-lg-2 col-xl-1">
-          <!-- LOGO -->
-            <a href="inicio.html"><img class="logo" src="img/Logo peludos shop.png" alt="..." ></a>
-        </div>
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-11">
+      <!-- LOGO -->
+      <div class="  col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+        <a href="{% url 'inicio'%}"><img  class="logo" src="{% static 'img/Logo.png' %}" alt="..." ></a>
+      </div>
 
-          <!-- BARRA DE BUSQUEDA -->
-          <nav class="navbar bg-body-tertiary" >
-            <form class="container-fluid">
-              <div class="input-group">
-                <input id="lupa" class="form-control me-2" type="search" placeholder="¿Qué buscas?" aria-label="Search">
-                <button class="btn btn-outline-" type="submit"><img src="img/lupa.png" width="30px" ></button>
+      <div class="ver-menu col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+        <p class="ver-menu">SANTIAGO ALIMENTOS</p>
+      </div>
+        
+        
+        <div class="usuario  col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 
-                <div class="dropdown">
-                  <button id="carrito2" class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><a href="login.html" target="_blank"><img src="img/USUARIO.png" width="40px"></a>
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="login.html">Iniciar sesion</a></li>
-                    <li><a class="dropdown-item" href="registrarse.html">Registrarse</a></li>
-                  </ul>
+          <div class="dropdown">
+            <!-- imagen usuario -->
+            <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" aria-expanded="false"><img src="{% static 'img/usuario.png' %}" width="40px"></a>
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" class="mod_registro" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5 modal_R" id="exampleModalLabel">Registrarse</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- Registro -->
+                    <form action='' method="get" id="form"> 
+                      <div class="mb-3">
+                        <input type="text" id="nombre1" class="form-control" class="campo" placeholder="Nombre">
+                        <div id="mensaje1" class="errores">Dame tu nombre</div>
+                      </div>
+                      <div class="mb-3">
+                        <input type="email" id="correo" class="form-control" class="campo" placeholder="Correo">
+                        <div id="mensaje2" class="errores">Dame tu correo</div>
+                      </div>
+                      <div class="mb-3">
+                        <input type="password" id="contrasena1" class="form-control" class="campo" placeholder="Contraseña">
+                        <div id="mensaje3" class="errores">Dame tu contraseña</div>
+                      </div>
+                      <div class="mb-3">
+                        <input type="password" id="contrasena2" class="form-control" class="campo" placeholder="Confirmar contraseña"> 
+                        <div id="mensaje4" class="errores">Confirma tu contraseña</div>
+                      </div>
+                      <div class="d-flex align-items-center justify-content-center">
+                        <p class="check"><input type="checkbox" id="checkbox"> He leído y acepto los <a href="#">términos y condiciones</a></p>
+                      </div>
+                      <div class="submit">
+                        <input type="submit" class="boton" id="enviar"> 
+                        <div id="mensaje5" class="errores">Debe aceptar los términos</div><br> <br>
+                      </div>
+                      <div class="d-flex align-items-center justify-content-center">
+                        <a href="{% url 'login'%}" id="inicio_sesion">Ya tengo cuenta</a>
+                      </div>
+                    </form> 
+                  </div> 
+                </div> 
+              </div>
+            </div>
+            <!-- imagen carrito -->
+            <a href="#">
+              <button id="carrito1" type="button" class="btn" onclick="abrirCarrito()">
+                <img src="{% static 'img/carrito.png'%}" width="40px">
+                <span id="cantidadCarrito" class="badge bg-danger rounded-pill">0</span>
+              </button>
+            </a>
+
+            <div class="modal fade" id="carritoModal" tabindex="-1" role="dialog" aria-labelledby="carritoModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="carritoModalLabel">Carrito de Compras</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-12">
+                          <div id="carrito-contenido"></div>
+                          <div id="carrito-total"></div>
+                          <hr class="border border-danger border-2 opacity-50">
+                          <button type="button" class="btn btn-secondary btn-pagar" data-bs-dismiss="modal">PAGAR</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </form>
-          </nav>
-        </div>
-
-        <!-- BARRA NAVEGACION -->
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-          <nav class="navbar navbar-expand-lg bg-body-tertiary ">
-            <div class="container-fluid">
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-                      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                        <ul class="navbar-nav">
-                          <li class="nav-item item_arriba">
-                            <a class="nav-link active" aria-current="page" href="inicio.html"><img src="img/icono2.png" width="30px">INICIO</a>
-                          </li>
-                          <li class="nav-item item_arriba">
-                            <a class="nav-link active" aria-current="page" href="perritos.html"><img src="img/perrito.png" width="30px">PERROS</a>
-                          </li>
-                          <li class="nav-item item_arriba">
-                            <a class="nav-link active" aria-current="page" href="gatitos.html"><img src="img/gatito.png" width="30px">GATOS</a>
-                          </li>
-                          <li class="nav-item item_arriba">
-                            <a class="nav-link active" aria-current="page" href="nosotros.html"><img src="img/icono3.png" width="30px">NOSOTROS</a>
-                          </li>
-                          <li class="nav-item item_arriba">
-                            <a class="nav-link active" aria-current="page" href="contacto.html"><img src="img/contacto.png" width="30px">CONTACTO</a>
-                          </li>
-                        </ul>
-                      </div>
             </div>
-          </nav>
+          </div>
+        </div>
+      <!-- BARRA NAVEGACION -->
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <nav id="navbar" class="navbar navbar-expand-lg bg-body-tertiary ">
+          <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item item_arriba">
+                  <a class="nav-link active" aria-current="page" href="{% url 'inicio' %}"><img src="{% static 'img/icono2.png'%}" width="30px">INICIO</a>
+                </li>
+                <li class="nav-item item_arriba">
+                  <a class="nav-link active" aria-current="page" href="{% url 'menu' %}"><img src="{% static 'img/icono2.png'%}" width="30px">MENÚ</a>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </nav>
       </div>
     </div>
   </div> <!--container-fluid-->
@@ -118,7 +147,10 @@
         
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
           <h1 style="font-weight: bold;">Nuestra historia</h1>
-          <h6 style="line-height: 30px; text-shadow: 2px 10px 7px #8e8aba;">Un grupo de amigas apasionadas por los animales dio vida a nuestra tienda de accesorios para mascotas en 2020. Inicialmente, comenzamos modestamente en las redes sociales, ofreciendo productos hechos a mano con amor y dedicación, como bandanas, correas e identificaciones. Nuestro compromiso con una causa noble llevó al éxito de nuestro emprendimiento. Al asociarnos con la ONG "Ayuda a un Peludo", destinamos parte de nuestras ganancias para brindar atención médica, alimento y refugio a animales rescatados. Cada venta representa una contribución significativa para nuestros amigos peludos necesitados. Con el tiempo, hemos crecido y ahora contamos con una plataforma web que nos permite llegar a más clientes y promover nuestros productos de manera eficiente. Sin embargo, más allá de las ventas, nuestra principal motivación es marcar la diferencia en la vida de los animales abandonados y promover la adopción responsable.</h2>
+          <h6 style="line-height: 30px; text-shadow: 2px 10px 7px #8e8aba;">Hace diez años, en el corazón de Santiago, Don Guillermo fundó "El Comilón" con una visión clara: ofrecer comidas caseras, frescas y sabrosas, inspiradas en las recetas tradicionales de su abuela.
+            Con el deseo de brindar una alternativa a la comida rápida industrial, Don Ricardo abrió este acogedor restaurante, convirtiéndolo rápidamente en un favorito entre los trabajadores de las empresas cercanas. El compromiso con ingredientes de alta calidad y el esmero en cada plato hicieron que "El Comilón" se destacara por su auténtica cocina casera.            
+            Para satisfacer la creciente demanda, incorporamos el servicio de entrega a domicilio, permitiendo que nuestros clientes disfruten de sus comidas favoritas sin salir de sus oficinas. A lo largo de los años, hemos mantenido nuestra esencia, adaptándonos a los cambios y desafíos del mercado.
+            Hoy, "El Comilón" sigue siendo un símbolo de tradición y buena comida en Santiago, comprometido con la calidad y el servicio que nos caracteriza desde el primer día. ¡Gracias por ser parte de nuestra historia! </h2>
         </div>
 
         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
@@ -132,18 +164,22 @@
         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
           <h1 style="font-weight: bold; text-align: right;">Nuestra misión</h1>
           <h6 style="line-height: 30px; text-shadow: 2px 10px 7px #8e8aba">
-            En nuestra tienda de accesorios para mascotas, tenemos una misión clara: ofrecer productos de calidad y al mismo tiempo, apoyar a la ONG "Ayuda a un Peludo" en su labor de rescate, rehabilitación y adopción de animales abandonados.
-            Nos apasiona la idea de que cada compra realizada en nuestra tienda contribuya a darle una segunda oportunidad a un perro o gato sin hogar. Queremos ser parte de la solución al problema del abandono animal y crear conciencia sobre la importancia de la tenencia responsable de mascotas.
-            Además de nuestros productos, nos esforzamos por promover los valores de compasión, respeto y amor hacia todos los animales. Creemos que cada ser vivo merece ser tratado con dignidad y cariño, y trabajamos incansablemente para construir una comunidad más sensible y comprometida con el bienestar animal.
+            En "El Comilón", nuestra misión es brindar a nuestros clientes una experiencia gastronómica única, ofreciendo comidas caseras de alta calidad, 
+            preparadas con ingredientes frescos y tradicionales. Nos dedicamos a satisfacer las necesidades de nuestros clientes, 
+            ya sea en nuestro acogedor restaurante o a través de nuestro eficiente servicio de entrega a domicilio, siempre con un compromiso 
+            inquebrantable con la autenticidad, el sabor y la satisfacción del cliente. Queremos ser el lugar donde cada comida se sienta como en casa, 
+            promoviendo la alimentación saludable y el bienestar de nuestra comunidad.
           </h6>
+          <br>
         </div>
+        <br>
+        <hr>
 
-        
         <!--VIDEO-->
         <div class="col-12 col-sm-12 col-md-9 col-lg-6 col-xl-6">
 
           <div class="ratio ratio-16x9" >
-            <h1 style="font-weight: bold; text-align: center;">Apoyamos la adopción</h1>
+            <h1 style="font-weight: bold; text-align: center;">NUESTRO LOCAL</h1>
             <iframe src="img/Video PETS.mp4" title="Video" allowfullscreen></iframe>
           </div>
           
@@ -157,6 +193,7 @@
             <div class="col-md-6 mb-md-0 p-md-4">
               <img src="img/Fundacion-Esperanza animal.png" class="w-100" alt="...">
             </div>
+            
             <div class="col-md-6 p-4 ps-md-0">
               <h5 class="mt-0">FUNDACION</h5>
               <p>Fundación Esperanza Animal es una organización sin fines de lucro que se forma con el objetivo de mejorar la calidad de vida de las mascotas abandonadas o nacidas en la calle y a la vez disminuir la sobrepoblación a través de la educación y concientizar sobre la temática de Tenencia Responsable en nuestro país.</p>
@@ -172,63 +209,56 @@
 
 
 
-    <!--   FOOTER   -->
-    <div class="footer">
-      <div class=" container">
-        <div class="row">
-          <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
-            <img src="img/Logo peludos shop.png" width="150px" alt="">
-          </div>
-          <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2">
-              <h5>AYUDA</h5>
-              <a href="preguntasFrecuentes.html">Preguntas frecuentes</a>
-              <a href="contacto.html">Contacto</a>
-          </div>
-          <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2">
-            <h5>LEGAL</h5>
-            <a href="">Términos y Condiciones</a>
-            <a href="">Política de privacidad</a>
-          </div>
-  
-          <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2">
-            <h5>FUNDACION</h5>
-            <a href="https://www.esperanzaanimal.cl/">Fundacion Esperanza Animal</a>
-  
-          </div>
-  
-          <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2">
-            <h5>SUSCRIPCIÓN</h5>
-            <a href="suscripcion.html">suscripción fundación</a>
-          </div>
-        </div>
-  
+<!--   FOOTER   -->
+<div class="footer">
+  <div class=" container">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+        <img src="{% static 'img/Logo.png'%}" width="150px" alt="">
       </div>
-          <div class="co-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
-  
-            <div class="social-media">
-              <h5>Síguenos</h5>
-              <a target="blank" href="https://www.instagram.com/fundacionesperanzaanimalchile/" class="social-media-icon">
-                <i class='bx bxl-instagram' ></i>
-              </a>
-              <a target="blank" href="https://www.facebook.com/fundacionesperanzaanimalchile/" class="social-media-icon">
-                <i class='bx bxl-facebook'></i>
-              </a>
-              <a target="blank" href="https://www.youtube.com/channel/UCREiRMZ84M5yAPrKm4dPu-g" class="social-media-icon">
-                <i class='bx bxl-youtube'></i>
-              </a>
-            </div>
-          </div>
-        </div>
-  
-
-
-
-
-          <!--   D RESERVADOS   -->
-      <div class="c-reservados">
-        &copy; 2024 Peludos Shop. Todos los derechos reservados
-          <!--http://www.ascii.cl/htmlcodes.htm-->
+      <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2">
+        <h5>AYUDA</h5>
+        <a href="{% url 'preguntasFrecuentes'%}">Preguntas frecuentes</a>
+        <a href="#">Contacto</a>
+        <a href="{% url 'nosotros'%}">Nosotros</a>
       </div>
+      <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2">
+        <h5>LEGAL</h5>
+        <a href="">Términos y Condiciones</a>
+        <a href="">Política de privacidad</a>
+      </div>
+
+      <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2">
+        <h5>CONVENIO</h5>
+        <a href="">Convenio empresas </a>
+      </div>
+
+
+  </div>
+  <div class="co-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+
+    <div class="social-media">
+      <h5>Síguenos</h5>
+      <a target="blank" href="#" class="social-media-icon">
+        <i class='bx bxl-instagram' ></i>
+      </a>
+      <a target="blank" href="#" class="social-media-icon">
+        <i class='bx bxl-facebook'></i>
+      </a>
+      <a target="blank" href="#" class="social-media-icon">
+        <i class='bx bxl-youtube'></i>
+      </a>
+    </div>
+
+    
+  </div>
+</div>
+</div>
+      <!--   D RESERVADOS   -->
+  <div class="c-reservados">
+    &copy; 2024 Almuerzo Santiago. Todos los derechos reservados
+      <!--http://www.ascii.cl/htmlcodes.htm-->
+  </div>
 
 
       <script src="{% static 'Js/carrito.js'%}"></script>

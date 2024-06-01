@@ -73,7 +73,11 @@
   background: #62adf9;
   transition: ease-in-out .3s;
 }
-
+/*Imagen de la parte superior de las paginas*/
+.imagen-top img{
+  margin-top: 15px;
+  border-radius: 20px;
+}
 
 .lo-mas-vendido h1{
   text-align: center;
@@ -353,6 +357,12 @@ h2{
   -webkit-text-stroke: 2px black;
 }
 
+h3{
+  display: flex;
+  justify-content: center;
+  
+}
+
 /*MARGEN DE AYUDA A LA FUNDACION*/
 .bg-body-secondary{
   margin-top: 25px;
@@ -398,27 +408,6 @@ h2{
 }
 
 
-
-
-/* LUPA */
-/* #lupa{
-  width: 83%;
-  border-radius: 10px;
-  border: 2px solid rgb(211, 158, 252);
-
-}
-
-#carrito1{
-  position: fixed;
-  right: 9px;
-  margin-right: 0.5%;
-}
-
-.navbar{
-  margin-top: 20px;
-} */
-
-/* Registro */
 .modal-content{
   background-color: white;
 }
@@ -449,3 +438,4 @@ h2{
 span{
   color: red;
 }
+

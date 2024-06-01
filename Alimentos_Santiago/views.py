@@ -8,38 +8,24 @@ def inicio(request):
 def login(request):
     return render(request, 'login.html')
 
-def registrarse(request):
-    return render(request, 'registrarse.html')
+def menu(request):
+    return render(request, 'menu.html')
 
-def perritos(request):
-    return render(request, 'perritos.html')
+def chile(request):
+    return render(request, 'chile.html')
 
-def gatitos(request):
-    return render(request, 'gatitos.html')
+def italia(request):
+    return render(request, 'italia.html')
 
-def contacto(request):
-    return render(request, 'contacto.html')
-
-def accesorios(request):
-    return render(request, 'accesorios.html')
-
-def alimentos(request):
-    return render(request, 'alimentos.html')
-
-def camas(request):
-    return render(request, 'camas.html')
-
-
-
-
-def identificador(request):
-    return render(request, 'identificador.html')
+def china(request):
+    return render(request, 'china.html')
 
 def nosotros(request):
     return render(request, 'nosotros.html')
 
+def peru(request):
+    return render(request, 'peru.html')
+
 def preguntasFrecuentes(request):
     return render(request, 'preguntasFrecuentes.html')
 
-def suscripcion(request):
-    return render(request, 'suscripcion.html')
