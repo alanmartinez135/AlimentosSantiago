@@ -148,8 +148,28 @@
   
   <!-- CARUUSEL -->
   <div class="container" id="CCO">
-    <hr>
     <div class="row">
+      
+      <!-- CIRCULOS  --> 
+      <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3 text-center">
+        <a href="{% url 'chile'%}"><img class="img-circulo" src="{% static 'img/comida-tipica-chilena.jpg'%}" alt="" width="200px"></a>
+        <p class="p-img-circulo"><a href="{% url 'chile'%}">CHILE</a></p>
+      </div>
+      <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3 text-center">
+          <a href="{% url 'china'%}"><img class="img-circulo" src="{% static 'img/comida-china.jpg'%}" alt="" width="200px"></a>
+          <p class="p-img-circulo"><a href="{% url 'china'%}">CHINA</a></p>
+      </div>
+      <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3 text-center">
+          <a href="{% url 'peru'%}"><img class="img-circulo" src="{% static 'img/comida-peruana.jpg'%}"alt="" width="200px"></a>
+          <p class="p-img-circulo"><a href="{% url 'peru'%}">PERU</a></p>
+      </div>
+      <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3 text-center">
+          <a href="{% url 'italia'%}"><img class="img-circulo" src="{% static 'img/comida-italiana.jpg'%}" alt="" width="200px"></a>
+          <p class="p-img-circulo"><a href="{% url 'italia'%}">ITALIA</a></p>
+      </div>
+      <hr>
+
+
       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <!-- CARUUSEL -->
         <div class="lo-mas-vendido">
@@ -181,8 +201,6 @@
                   </div>
                 </div>
               </div>
-
-
             </div>
             <div class="carousel-item">
 
@@ -247,32 +265,17 @@
     </div> <!--div row-->
   </div> <!--div container-->
 
+
+  <!--VER MAS -->
   <div class="container" id="CCO">
     <div class="vermas-arriba-circulos">
       <a href="{% url 'menu' %}">
         <button class="btn btn-custom-purple ">Ver mas</button>
       </a>
     </div>
+
+    
     <div class="row">
-      <!-- CIRCULOS  --> 
-      <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3 text-center">
-        <a href="{% url 'chile'%}"><img class="img-circulo" src="{% static 'img/comida-tipica-chilena.jpg'%}" alt="" width="200px"></a>
-        <p class="p-img-circulo"><a href="{% url 'chile'%}">CHILE</a></p>
-      </div>
-      <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3 text-center">
-          <a href="{% url 'china'%}"><img class="img-circulo" src="{% static 'img/comida-china.jpg'%}" alt="" width="200px"></a>
-          <p class="p-img-circulo"><a href="{% url 'china'%}">CHINA</a></p>
-      </div>
-      <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3 text-center">
-          <a href="{% url 'peru'%}"><img class="img-circulo" src="{% static 'img/comida-peruana.jpg'%}"alt="" width="200px"></a>
-          <p class="p-img-circulo"><a href="{% url 'peru'%}">PERU</a></p>
-      </div>
-      <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3 text-center">
-          <a href="{% url 'italia'%}"><img class="img-circulo" src="{% static 'img/comida-japonesa.jpg'%}" alt="" width="200px"></a>
-          <p class="p-img-circulo"><a href="{% url 'italia'%}">ITALIA</a></p>
-      </div>
-
-
       <!-- OFERTAS -->
       <div class="col-12" id="OFERTAS">
         <div class="container cont-cartas">

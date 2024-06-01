@@ -12,7 +12,7 @@
 .navbar{
   border-radius: 5px;
   box-shadow: 0px 0px 5px 3px rgba(75, 75, 75, 0.5);
-  margin-top: -15px;
+  margin-top: 5px;
 }
 
 .usuario{
@@ -24,7 +24,7 @@
 /* COLOR DEL background DE LA BARRA PRINCIPAL */
 #barra_principal{
   background-color: #133F57;
-  padding-bottom: 15px;
+  padding-bottom: 25px;
 }
 
 .ver-menu p{
