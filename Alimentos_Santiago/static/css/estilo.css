@@ -3,6 +3,12 @@
   padding: 5px;
   font-family: "Oswald";
 }
+
+/*BOTONES INICIAR SESION / REGISTRARSE*/
+.boton-sesion{
+  color: white;
+
+}
 /* LOGO */
 .logo{
   width: 150px;
