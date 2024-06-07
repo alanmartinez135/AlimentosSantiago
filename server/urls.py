@@ -22,15 +22,5 @@ from Alimentos_Santiago.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", include("Alimentos_Santiago.urls")),
-    path('inicio/', inicio, name='inicio'),
-    path('login/', login, name='login'),
-    path('menu/', menu, name='menu'),
-    path('chile/', chile, name='chile'),
-    path('italia/', italia, name='italia'),
-    path('china/', china, name='china'),
-    path('peru/', peru, name='peru'),
-    path('nosotros/', nosotros, name='nosotros'),
-    path('preguntasFrecuentes/', preguntasFrecuentes, name='preguntasFrecuentes'),
-
+    path('', include("Alimentos_Santiago.urls")),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
