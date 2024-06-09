@@ -14,7 +14,6 @@ class UserProfile(models.Model):
 
 #agregaro desde rama proveedores
 
-
 class Proveedor(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField('Nombre proveedor', max_length=50, blank=False, null=False)
@@ -63,3 +62,4 @@ class OfertaPlatoProveedor(models.Model):
 
     def __str__(self):
         return f"{self.plato} | Precio : ${self.precio}"
+    
