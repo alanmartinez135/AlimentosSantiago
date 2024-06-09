@@ -8,3 +8,7 @@ admin.site.register(UserProfile)
 admin.site.register(Proveedor)
 admin.site.register(PlatoProveedor)
 admin.site.register(OfertaPlatoProveedor)
+
+admin.site.register(PlatoAdmin)
+admin.site.register(Repartidores)
+admin.site.register(DestinoRepartidor)
