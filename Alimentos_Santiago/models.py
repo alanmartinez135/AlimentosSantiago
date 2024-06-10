@@ -105,6 +105,7 @@ class Repartidores(models.Model):
 class DestinoRepartidor(models.Model):
     repartidor = models.ForeignKey(Repartidores, on_delete=models.CASCADE)
     fecha_despacho = models.DateField('Fecha Despacho', blank=False, null=False)
+    hora_despacho = models.TimeField('Hora Despacho', default='00:00:00', blank=False, null=False)
     direccion = models.CharField('Direccion', max_length=100, blank=False, null=False)
     
     class Meta:
