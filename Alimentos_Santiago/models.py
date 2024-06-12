@@ -6,22 +6,23 @@ from django.conf import settings
 
 class UserProfile(models.Model):
     user = models.OneToOneField(get_user_model(), on_delete= models.CASCADE)
-    run = models.IntegerField(verbose_name='run')
+    run = models.IntegerField(verbose_name='run', unique=True)
+    saldo = models.IntegerField(default=0)
     role = models.CharField(max_length=9, choices=settings.ROLES)
     def __str__(self):
         return f'{self.user.username} - {self.role}'
     
 class Empresa(models.Model):
-    nombre = models.CharField(max_length=20)
+    nombre = models.CharField(max_length=20, verbose_name='Nombre de la empresa')
     run_empleado = models.ManyToManyField(UserProfile, related_name='empresa')
+    rut = models.CharField(max_length=12, unique=True) # rut de la empresa 
+    direccion = models.CharField(max_length=50) # direccion de la empresa
     def __str__(self):
         return self.nombre
-
 
 #agregaro desde rama proveedores
 
 class Proveedor(models.Model):
-    id = models.AutoField(primary_key=True)
     nombre = models.CharField('Nombre proveedor', max_length=50, blank=False, null=False)
     pais = models.CharField('País', max_length=25, blank=False, null=False)
     fecha_contrato = models.DateField('Fecha de contrato', blank=False, null=False)
