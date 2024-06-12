@@ -26,9 +26,6 @@
             <div class="usuario  col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
     
               <div class="dropdown">
-                {% comment %} <!-- imagen usuario -->
-                <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" aria-expanded="false"><a href="registro"><img src="{% static 'img/usuario.png' %}" width="40px"></a>
-                </button> {% endcomment %}
                 {% if perfil != 'admin' and perfil != 'cliente' %}
                   <a class="btn btn-primary" href="{% url 'iniciosesion' %}">Inicio Sesión</a>
                   <a class="btn btn-primary" href="{% url 'registro' %}">Registrarse</a>

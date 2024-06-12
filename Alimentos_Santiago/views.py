@@ -20,6 +20,7 @@ def registro(request):
     if request.method == 'POST': 
         us = request.POST.get('InputUsuario')
         correo = request.POST.get('InputEmail1')
+        run = request.POST.get('run')
         contrasenia = request.POST.get('InputPassword1')
         role = 'cliente'
 
@@ -30,6 +31,10 @@ def registro(request):
         if User.objects.filter(email=correo).exists():
             messages.error(request, 'El correo ya está en uso')
             return render(request, 'auth/registro.html')
+        
+        if User.objects.filter(id=run).exists():
+            messages.error(request, 'El rut ya está en uso')
+            return render(request, 'auth/registro.html')
 
         # Verifica que 'us' no esté vacío o nulo antes de crear el usuario
         if not us:
@@ -38,7 +43,7 @@ def registro(request):
 
         user = User.objects.create_user(username=us, email=correo, password=contrasenia)
         
-        UserProfile.objects.create(user=user, role=role)
+        UserProfile.objects.create(user=user, run=run, role=role)
         return redirect('inicio')
         # Resto de tu lógica aquí (redireccionar, etc.)
 

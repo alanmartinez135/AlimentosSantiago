@@ -6,10 +6,16 @@ from django.conf import settings
 
 class UserProfile(models.Model):
     user = models.OneToOneField(get_user_model(), on_delete= models.CASCADE)
-    role = models.CharField(max_length=20, choices=settings.ROLES)
+    run = models.IntegerField(verbose_name='run')
+    role = models.CharField(max_length=9, choices=settings.ROLES)
     def __str__(self):
         return f'{self.user.username} - {self.role}'
     
+class Empresa(models.Model):
+    nombre = models.CharField(max_length=20)
+    run_empleado = models.ManyToManyField(UserProfile, related_name='empresa')
+    def __str__(self):
+        return self.nombre
 
 
 #agregaro desde rama proveedores
