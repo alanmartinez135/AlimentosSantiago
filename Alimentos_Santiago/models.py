@@ -48,18 +48,5 @@ class PlatoProveedor(models.Model):
     def __str__(self):
         return f"{self.id} | Nombre plato : {self.nombre_plato} | Nombre proveedor : {self.proveedor.nombre} "
 
-class OfertaPlatoProveedor(models.Model):
-    plato = models.OneToOneField(PlatoProveedor, on_delete=models.CASCADE, primary_key=True)
-    proveedor = models.ForeignKey(Proveedor, on_delete=models.CASCADE, related_name='ofertas')
-    precio = models.DecimalField('Precio oferta', max_digits=10, decimal_places=2, blank=False, null=False)
-    disponible = models.BooleanField('Disponible', default=False)
-    imagen = models.ImageField('Imagen de la oferta', upload_to='Alimentos_Santiago/media/ofertas/', blank=True, null=True)
 
-    class Meta:
-        verbose_name = 'Oferta de plato proveedor'
-        verbose_name_plural = 'Ofertas de platos proveedores'
-        ordering = ['proveedor', 'plato']
-
-    def __str__(self):
-        return f"{self.plato} | Precio : ${self.precio}"
     
