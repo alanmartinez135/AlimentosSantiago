@@ -76,7 +76,7 @@ class Repartidores(models.Model):
 #DESTINO
 class DestinoRepartidor(models.Model):
     repartidor = models.ForeignKey(Repartidores, on_delete=models.CASCADE)
-    plato = models.ForeignKey(PlatoProveedor, on_delete=models.CASCADE)
+    plato = models.ManyToManyField(PlatoProveedor)
     fecha_despacho = models.DateField('Fecha Despacho', blank=False, null=False)
     hora_despacho = models.TimeField('Hora Despacho', default='00:00:00', blank=False, null=False)
     direccion = models.CharField('Direccion', max_length=100, blank=False, null=False)
