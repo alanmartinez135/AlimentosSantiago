@@ -9,4 +9,4 @@ admin.site.register(Proveedor)
 admin.site.register(PlatoProveedor)
 admin.site.register(Empresa)
 admin.site.register(Repartidores)
-admin.site.register(DetallePedido)
+

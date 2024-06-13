@@ -55,6 +55,7 @@ class PlatoProveedor(models.Model):
     def __str__(self):
         return f"{self.id} | Nombre plato : {self.nombre_plato} | Nombre proveedor : {self.proveedor.nombre} "
 
+
 #REPARTIDOR
 class Repartidores(models.Model):
     rut = models.CharField('Rut',max_length=10, primary_key=True)
@@ -73,25 +74,6 @@ class Repartidores(models.Model):
         return f"Rut Repartidor : {self.rut} | Nombre del Repartidor : {self.nombre} | Disponibilidad : {self.disponibilidad}"
 
 
-#DESTINO
-class DetallePedido(models.Model):
-    repartidor = models.ForeignKey(Repartidores, on_delete=models.CASCADE)
-    plato = models.ManyToManyField(PlatoProveedor)
-    fecha_despacho = models.DateField('Fecha Despacho', blank=False, null=False)
-    hora_despacho = models.TimeField('Hora Despacho', default='00:00:00', blank=False, null=False)
-    TIPO_RETIRO = [
-        ('TIENDA', 'En tienda'),
-        ('DELIVERY', 'Delivery'),
-    ]
-    retiro = models.CharField('Tipo de retiro', max_length=10, choices=TIPO_RETIRO, default='TIENDA', blank=False, null=False)
-    direccion = models.CharField('Direccion', max_length=100, blank=False, null=False)
-    
-    class Meta:
-        verbose_name = 'Destino Repartidor'
-        verbose_name_plural = 'Destinos Repartidores'
-        ordering = ['fecha_despacho']
-
-    def __str__(self):
-        return f"{self.repartidor} | Fecha Despacho : {self.fecha_despacho} | Direccion : {self.direccion}"    
+ 
 
 
