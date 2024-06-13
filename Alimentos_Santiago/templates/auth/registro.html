@@ -89,13 +89,13 @@
       </div>
     </div>
   </div> <!--container-fluid-->
-
+<div class="container registro">
   <div class="separador"></div>
-  <div class="texto-registro">
+  <div class="texto-registro col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
     <h3>Registro</h3>
   </div>
-  <div class="div-input">
-    <form action="" method="POST">
+  <div class="div-input col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+    <form  action="" method="POST">
       {% csrf_token %}
       <div class="mb-3">
         <label for="Usuario" class="form-label">Usuario</label>
@@ -121,7 +121,9 @@
         <input type="checkbox" class="form-check-input" id="Check1">
         <label class="form-check-label" for="exampleCheck1">Acepta los términos y condiciones</label>
       </div>
-      <button type="submit" class="btn btn-enviar">Enviar</button>
+      <button type="submit" class="btn btn-light">Enviar</button>
     </form>
   </div>
+</div>
+  
 {% endblock %} 

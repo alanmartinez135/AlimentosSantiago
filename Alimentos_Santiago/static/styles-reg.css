@@ -2,14 +2,17 @@
     height: 50px;
 }
 
+.registro{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
 .texto-registro{
     text-align: center;
     font-family: "Oswald";
-    width: 20%;
-    margin-left: 40%;
-    margin-right: 40%;
     padding-top: 4%;
-    padding-bottom: 1%;
+    padding-bottom: 1%; 
 
     border-bottom: 1px solid white;
     background-color: #1F6ABC;
@@ -18,13 +21,9 @@
 }
 
 .div-input{
-    width: 20%;
     height: 70%;
-    margin-left: 40%;
-    margin-right: 40%;
     margin-bottom: 5%;
-    padding: 3% 3% 3% 3%;
-
+    padding: 3% 3% 3% 3%; 
     background-color: #1F6ABC;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -38,7 +37,7 @@
     color: white;
 }
 
-.btn-enviar{
-    margin-left: 40%;
-    background-color: white;
-}
+
+
+
+
