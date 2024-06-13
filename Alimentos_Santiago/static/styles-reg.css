@@ -13,7 +13,6 @@
     font-family: "Oswald";
     padding-top: 4%;
     padding-bottom: 1%; 
-
     border-bottom: 1px solid white;
     background-color: #1F6ABC;
     border-top-left-radius: 5px;
@@ -22,18 +21,9 @@
 
 .div-input{
     height: 70%;
-<<<<<<< Updated upstream
     margin-bottom: 5%;
     padding: 3% 3% 3% 3%; 
     background-color: #1F6ABC;
-=======
-    margin-left: 70%;
-    margin-right: 70%;
-    margin-bottom: 5%;
-    padding: 3% 3% 3% 3%;
-
-    background-color: #1fafbc;
->>>>>>> Stashed changes
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
 }
