@@ -11,9 +11,13 @@ from .decorators import role_required
 
 def inicio(request):
     perfil = request.session.get('perfil')
+    platos = PlatoProveedor.objects.all()
+
     context = {
         'perfil': perfil,
-    } 
+        'platos': platos,
+    }
+
     return render(request, 'public/inicio.html', context)
 
 def registro(request):
