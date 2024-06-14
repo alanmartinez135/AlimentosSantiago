@@ -96,22 +96,25 @@
 
       <!-- ENTRADAS  -->
       <div class="col-12" id="ENTRADAS">
-  
+        <h3>ENTRADAS</h3>
         <div class="container cont-cartas">
-          <h3>ENTRADAS</h3>
-
-          <div class="row row-cols-1 row-cols-md-4 g-4">
-            <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-              <div class="card h-100">
-                <img src="{% static 'img/1366_2000 (1).jpg'%}" class="card-img-top producto-imagen" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">ALMUERZO</h5>
-                  <p class="card-text">Escribir la descripcion aqui</p>
-                  <p class="producto-precio">$6.990</p>
-                </div>
-                <button type="button" class="btn btn-custom-purple producto-agregar" data-id="1">Agregar al carrito</button>
+          {% for plato in platos %}
+          <div class="card" style="width: 18rem;">
+              {% if plato.imagen %}
+                  <img src="{{ plato.imagen.url }}" class="card-img-top producto-imagen" alt="Foto del alumno">
+              {% else %}
+                  <span>No hay foto disponible</span>
+              {% endif %}
+              <div class="card-body">
+              <h5 class="card-title">{{ plato.nombre_plato }}</h5>
+              <p class="card-text">{{ plato.proveedor}}</p>
+              <p class="card-text">{{ plato.descripcion }}</p>
+              <p class="card-text">{{ plato.precio }}</p>
+              <center><a href="#" class="btn btn-primary">Agregar al carrito</a></center>
               </div>
-            </div>
+          </div>
+          <br>
+      {% endfor %}
             
             <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
               <div class="card h-100">
