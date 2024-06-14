@@ -11,7 +11,7 @@ from .decorators import role_required
 
 def inicio(request):
     perfil = request.session.get('perfil')
-    platos = PlatoProveedor.objects.all()
+    platos = PlatoProveedor.objects.filter(disponibilidad=True)
 
     context = {
         'perfil': perfil,
@@ -19,6 +19,7 @@ def inicio(request):
     }
 
     return render(request, 'public/inicio.html', context)
+
 
 def registro(request):
     if request.method == 'POST': 
@@ -74,8 +75,13 @@ def logout_view(request):
     auth_logout(request)
     return redirect('inicio')
 
-def menu(request):
-    return render(request, 'menu.html')
+def menu(request):   
+    platos = PlatoProveedor.objects.filter(disponibilidad=True)
+    context = {
+   
+        'platos': platos,
+    }
+    return render(request, 'menu.html', context)
 
 def chile(request):
     return render(request, 'chile.html')
