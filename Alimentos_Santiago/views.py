@@ -10,8 +10,22 @@ from .decorators import role_required
 # Create your views here.
 
 def inicio(request):
+    user = request.user
     perfil = request.session.get('perfil')
-    platos = PlatoProveedor.objects.all()
+    if user.is_authenticated:
+        try:
+            user_profile = UserProfile.objects.get(user=user)
+            empresa = user_profile.empresa.first()  # Obtener la primera empresa asociada al perfil
+        except UserProfile.DoesNotExist:
+            user_profile = None
+            empresa = None
+#123qweasd.
+        if empresa:
+            platos = empresa.platos_disponibles.filter(disponibilidad=True)
+        else:
+            platos = PlatoProveedor.objects.filter(disponibilidad=True)
+    else:
+        platos = PlatoProveedor.objects.filter(disponibilidad=True)
 
     context = {
         'perfil': perfil,

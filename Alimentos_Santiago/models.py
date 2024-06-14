@@ -12,20 +12,10 @@ class UserProfile(models.Model):
     def __str__(self):
         return f'{self.user.username} - {self.role}'
     
-class Empresa(models.Model):
-    nombre = models.CharField(max_length=20, verbose_name='Nombre de la empresa')
-    run_empleado = models.ManyToManyField(UserProfile, related_name='empresa')
-    rut = models.CharField(max_length=12, unique=True) # rut de la empresa 
-    direccion = models.CharField(max_length=50) # direccion de la empresa
-    def __str__(self):
-        return self.nombre
-
-#agregaro desde rama proveedores
-
 class Proveedor(models.Model):
     nombre = models.CharField('Nombre proveedor', max_length=50, blank=False, null=False)
-    pais = models.CharField('País', max_length=25, blank=False, null=False)
-    fecha_contrato = models.DateField('Fecha de contrato', blank=False, null=False)
+    pais = models.CharField('País', max_length=25, blank=False, null=False) # PAIS????
+    fecha_contrato = models.DateField('Fecha de contrato', blank=False, null=False) # ????
     telefono = models.CharField('Teléfono', max_length=30, blank=False, null=False)
     correo = models.EmailField('Correo', max_length=50, blank=False, null=False)
     especialidad_tipo_plato = models.CharField('Especialidad tipo de plato', max_length=25, blank=False, null=False)
@@ -37,7 +27,7 @@ class Proveedor(models.Model):
 
     def __str__(self):
         return f"{self.id} | Nombre del proveedor : {self.nombre} | Especialidad : {self.especialidad_tipo_plato}"
-
+    
 class PlatoProveedor(models.Model):
     id = models.AutoField(primary_key=True)
     proveedor = models.ForeignKey(Proveedor, on_delete=models.CASCADE)
@@ -54,6 +44,17 @@ class PlatoProveedor(models.Model):
 
     def __str__(self):
         return f"{self.id} | Nombre plato : {self.nombre_plato} | Nombre proveedor : {self.proveedor.nombre} "
+    
+class Empresa(models.Model):
+    nombre = models.CharField(max_length=20, verbose_name='Nombre de la empresa')
+    run_empleado = models.ManyToManyField(UserProfile, related_name='empresa')
+    platos_disponibles = models.ManyToManyField(PlatoProveedor, related_name='plato_empresa')
+    rut = models.CharField(max_length=12, unique=True) # rut de la empresa 
+    direccion = models.CharField(max_length=50) # direccion de la empresa
+    def __str__(self):
+        return self.nombre
+
+#agregaro desde rama proveedores
 
 
 #REPARTIDOR

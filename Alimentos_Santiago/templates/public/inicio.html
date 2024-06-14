@@ -239,22 +239,23 @@
         <h1>Lista de productos</h1>
         <div class="container cont-cartas ">
           {% for plato in platos %}
-              <div class="card" style="width: 18rem;">
-                  {% if plato.imagen %}
-                      <img src="{{ plato.imagen.url }}" class="card-img-top producto-imagen" alt="Foto del alumno">
-                  {% else %}
-                      <span>No hay foto disponible</span>
-                  {% endif %}
-                  <div class="card-body">
-                  <h5 class="card-title">{{ plato.nombre_plato }}</h5>
-                  <p class="card-text">{{ plato.proveedor}}</p>
-                  <p class="card-text">{{ plato.descripcion }}</p>
-                  <p class="card-text">{{ plato.precio }}</p>
-                  <center><a href="#" class="btn btn-primary">Agregar al carrito</a></center>
-                  </div>
-              </div>
-              <br>
-          {% endfor %}
+    <div class="card" style="width: 18rem;">
+        {% if plato.imagen %}
+            <img src="{{ plato.imagen.url }}" class="card-img-top producto-imagen" alt="Imagen del plato">
+        {% else %}
+            <span>No hay foto disponible</span>
+        {% endif %}
+        <div class="card-body">
+            <h5 class="card-title">{{ plato.nombre_plato }}</h5>
+            <p class="card-text">{{ plato.proveedor.nombre }}</p>
+            <p class="card-text">{{ plato.descripcion }}</p>
+            <p class="card-text">{{ plato.precio }}</p>
+            <center><a href="#" class="btn btn-primary">Agregar al carrito</a></center>
+        </div>
+    </div>
+    <br>
+{% endfor %}
+
           <!-- Hasta aqui es para obtener los datos de los productos desde la base de datos -->
           
             <!-- <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
