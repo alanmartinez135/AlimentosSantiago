@@ -26,9 +26,6 @@
           <div class="usuario  col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
   
             <div class="dropdown">
-              {% comment %} <!-- imagen usuario -->
-              <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" aria-expanded="false"><a href="registro"><img src="{% static 'img/usuario.png' %}" width="40px"></a>
-              </button> {% endcomment %}
               {% if perfil != 'admin' and perfil != 'cliente' %}
                 <a class="btn btn-primary" href="{% url 'iniciosesion' %}">Inicio Sesión</a>
                 <a class="btn btn-primary" href="{% url 'registro' %}">Registrarse</a>
@@ -37,7 +34,7 @@
                 <a class="btn btn-primary" href="{% url 'logout' %}">Cerrar sesión</a>
               {% endif %}
               <!-- imagen carrito -->
-              <a href="#">
+              <a href="{% url 'carro'%}">
                 <button id="carrito1" type="button" class="btn" onclick="abrirCarrito()">
                   <img src="{% static 'img/carrito.png'%}" width="40px">
                   <span id="cantidadCarrito" class="badge bg-danger rounded-pill">0</span>
@@ -239,22 +236,24 @@
         <h1>Lista de productos</h1>
         <div class="container cont-cartas ">
           {% for plato in platos %}
-    <div class="card" style="width: 18rem;">
-        {% if plato.imagen %}
-            <img src="{{ plato.imagen.url }}" class="card-img-top producto-imagen" alt="Imagen del plato">
-        {% else %}
-            <span>No hay foto disponible</span>
-        {% endif %}
-        <div class="card-body">
-            <h5 class="card-title">{{ plato.nombre_plato }}</h5>
-            <p class="card-text">{{ plato.proveedor.nombre }}</p>
-            <p class="card-text">{{ plato.descripcion }}</p>
-            <p class="card-text">{{ plato.precio }}</p>
-            <center><a href="#" class="btn btn-primary">Agregar al carrito</a></center>
-        </div>
-    </div>
-    <br>
-{% endfor %}
+
+          <div class="card" style="width: 18rem;">
+
+            {% if plato.imagen %}
+                <img src="{{ plato.imagen.url }}" class="card-img-top producto-imagen" alt="Imagen del plato">
+            {% else %}
+                <span>No hay foto disponible</span>
+            {% endif %}
+
+            <div class="card-body">
+              <h5 class="card-title">{{ plato.nombre_plato }}</h5>
+              <p class="card-text">{{ plato.descripcion }}</p>
+              <p class="card-text">{{ plato.precio }}</p>
+              <center><a href="{% url 'detalle_plato' plato.id  %}" class="btn btn-primary">Ver Plato</a></center>
+            </div>
+          </div>
+          <br>
+          {% endfor %}
 
           <!-- Hasta aqui es para obtener los datos de los productos desde la base de datos -->
           

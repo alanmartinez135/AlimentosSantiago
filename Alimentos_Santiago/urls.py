@@ -13,4 +13,6 @@ urlpatterns = [
     path('peru/', views.peru, name='peru'),
     path('nosotros/', views.nosotros, name='nosotros'),
     path('preguntasFrecuentes/', views.preguntasFrecuentes, name='preguntasFrecuentes'),
+    path('plato/<int:id>/', views.detalle_plato, name='detalle_plato'), # Se define la URL para la vista de detalle de producto.
+    path('carro/', views.carro, name='carro'),
 ]

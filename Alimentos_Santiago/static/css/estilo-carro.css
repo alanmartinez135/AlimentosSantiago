@@ -1,0 +1,24 @@
+.card{
+    margin: 3% 0 3% 3%;
+    display: inline-block;
+}
+
+/* .hola{
+    margin: 3% 0 3% 3%;
+    width: 400px;
+    height: 300px;
+    background-color: aqua;
+    display: inline-block;
+} */
+
+.rectangulo-derecho{
+    margin: 3% 0 3% 3%;
+    width: 40%;
+    height: 70%;
+    background-color: tomato;
+    display: inline-block;
+    /* float: right;
+    position: relative;
+    align-items: flex-start; */
+    justify-content: space-around;
+}
