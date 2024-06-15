@@ -10,25 +10,51 @@ from .decorators import role_required
 # Create your views here.
 
 def inicio(request):
+    # Para que se muestren los platos que la empresa requeria de platos
+#    user = request.user
     perfil = request.session.get('perfil')
+#     if user.is_authenticated:
+#         try:
+#             user_profile = UserProfile.objects.get(user=user)
+#             empresa = user_profile.empresa.first()  # Obtener la primera empresa asociada al perfil
+#         except UserProfile.DoesNotExist:
+#             user_profile = None
+#             empresa = None
+
+#         if empresa:
+#             platos = empresa.platos_disponibles.filter(disponibilidad=True)
+#         else:
+#             platos = PlatoProveedor.objects.filter(disponibilidad=True)
+#     else:
+#         platos = PlatoProveedor.objects.filter(disponibilidad=True)
+
+    platos = PlatoProveedor.objects.filter(stock__gt=0)
+
     context = {
         'perfil': perfil,
-    } 
+        'platos': platos,
+    }
+
     return render(request, 'public/inicio.html', context)
 
 def registro(request):
-    if request.method == 'POST': 
+    if request.method == 'POST':
         us = request.POST.get('InputUsuario')
         correo = request.POST.get('InputEmail1')
+        run = request.POST.get('run')
         contrasenia = request.POST.get('InputPassword1')
         role = 'cliente'
 
         if User.objects.filter(username=us).exists():
             messages.error(request, 'El usuario ya está en uso')
             return render(request, 'auth/registro.html')
-        
+
         if User.objects.filter(email=correo).exists():
             messages.error(request, 'El correo ya está en uso')
+            return render(request, 'auth/registro.html')
+
+        if User.objects.filter(id=run).exists():
+            messages.error(request, 'El rut ya está en uso')
             return render(request, 'auth/registro.html')
 
         # Verifica que 'us' no esté vacío o nulo antes de crear el usuario
@@ -37,8 +63,8 @@ def registro(request):
             return render(request, 'auth/registro.html')
 
         user = User.objects.create_user(username=us, email=correo, password=contrasenia)
-        
-        UserProfile.objects.create(user=user, role=role)
+
+        UserProfile.objects.create(user=user, run=run, role=role)
         return redirect('inicio')
         # Resto de tu lógica aquí (redireccionar, etc.)
 
@@ -64,6 +90,19 @@ def iniciosesion(request):
 def logout_view(request):
     auth_logout(request)
     return redirect('inicio')
+
+def detalle_plato(request, id):
+    perfil = request.session.get('perfil')
+    plato = get_object_or_404(PlatoProveedor, id=id)
+
+    context = {
+        'perfil': perfil,
+        'plato': plato,
+    }
+    return render(request, 'public/detalle_plato.html', context)
+
+def carro(request):
+    return render(request, 'public/carro.html')
 
 def menu(request):
     return render(request, 'menu.html')

@@ -216,11 +216,11 @@
   /*TMAÑO PARA TODAS LAS IMAGENES DE LOS PRODUCTOS */
 }
 .producto-imagen{
-  height: 300px;
+  height: 220px;
 }
 
 .col-lg-4 .producto-imagen {
-  height: 250px;
+  height: 220px;
 }
 
 
@@ -439,3 +439,10 @@ span{
   color: red;
 }
 
+.cont-cartas{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 30px 0px 30px 0px;
+}

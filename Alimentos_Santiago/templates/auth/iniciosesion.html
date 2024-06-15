@@ -26,9 +26,6 @@
             <div class="usuario  col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
     
               <div class="dropdown">
-                {% comment %} <!-- imagen usuario -->
-                <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" aria-expanded="false"><a href="registro"><img src="{% static 'img/usuario.png' %}" width="40px"></a>
-                </button> {% endcomment %}
                 {% if perfil != 'admin' and perfil != 'cliente' %}
                   <a class="btn btn-primary" href="{% url 'iniciosesion' %}">Inicio Sesión</a>
                   <a class="btn btn-primary" href="{% url 'registro' %}">Registrarse</a>
@@ -78,7 +75,7 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                   <ul class="navbar-nav">
                     <li class="nav-item item_arriba">
-                      <a class="nav-link active" aria-current="page" href="#OFERTAS"><img src="{% static 'img/icono2.png'%}" width="30px">OFERTAS</a>
+                      <a class="nav-link active" aria-current="page" href="{% url 'inicio' %}"><img src="{% static 'img/icono2.png'%}" width="30px">OFERTAS</a>
                     </li>
                     <li class="nav-item item_arriba">
                       <a class="nav-link active" aria-current="page" href="{% url 'menu' %}"><img src="{% static 'img/icono2.png'%}" width="30px">MENÚ</a>
@@ -90,29 +87,32 @@
           </div>
         </div>
     </div> <!--container-fluid-->
-
-    <div class="separador"></div>
-    <div class="texto-registro">
+    
+    <div class="container registro">
+      <div class="separador"></div>
+      <div class="texto-registro col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
         <h3>Inicio sesión</h3>
-    </div>
+      </div>
 
-    <div class="div-input">
-      <form action="" method="POST">
-        {% csrf_token %}
-        <div class="mb-3">
-            <label for="InputUsuario" class="form-label">Usuario</label>
-            <input type="text" class="form-control input" id="InputUsuario" name="InputUsuario" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-            <label for="InputPassword1" class="form-label">Contraseña</label>
-            <input type="password" class="form-control input" id="InputPassword1" name="InputPassword1">
-        </div>
-        {% if error_message %}
-            <div class="alert alert-danger" role="alert">
-                {{ error_message }}
-            </div>
-        {% endif %}
-        <button type="submit" class="btn btn-enviar">Enviar</button>
-    </form>
-  </div>
+      <div class="div-input col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <form action="" method="POST">
+          {% csrf_token %}
+          <div class="mb-3">
+              <label for="InputUsuario" class="form-label">Usuario</label>
+              <input type="text" class="form-control input" id="InputUsuario" name="InputUsuario" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+              <label for="InputPassword1" class="form-label">Contraseña</label>
+              <input type="password" class="form-control input" id="InputPassword1" name="InputPassword1">
+          </div>
+          {% if error_message %}
+              <div class="alert alert-danger" role="alert">
+                  {{ error_message }}
+              </div>
+          {% endif %}
+          <button type="submit" class="btn btn-light">Enviar</button>
+        </form>
+      </div>
+    </div>
+    
 {% endblock %}
