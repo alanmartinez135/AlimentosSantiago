@@ -6,6 +6,7 @@ from .models import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .decorators import role_required
+from Alimentos_Santiago.Carrito import Carrito
 
 # Create your views here.
 
@@ -101,8 +102,45 @@ def detalle_plato(request, id):
     }
     return render(request, 'public/detalle_plato.html', context)
 
+# def carrito(request):
+#     return render(request, 'public/carrito.html')
+
 def carro(request):
-    return render(request, 'public/carro.html')
+    productos = PlatoProveedor.objects.all()
+    return render(request, "public/carrito.html", {"productos":productos})
+
+def descrip_carro(request):
+    return render(request, 'public/descrip_carrito.html')
+
+def lista_productos(request):
+    productos = PlatoProveedor.objects.all()  # Obtén todos los productos (ajusta la consulta según tu modelo)
+    context = {
+        'productos': productos,
+    }
+    return render(request, "carrito", context)
+
+def agregar_producto(request, producto_id):
+    v_carrito = Carrito(request)
+    producto = PlatoProveedor.objects.get(id=producto_id)
+    v_carrito.agregar(producto)
+    return redirect("carrito")
+
+def eliminar_producto(request, producto_id):
+    v_carrito = Carrito(request)
+    producto = PlatoProveedor.objects.get(id=producto_id)
+    v_carrito.eliminar(producto)
+    return redirect("carrito")
+
+def restar_producto(request, producto_id):
+    v_carrito = Carrito(request)
+    producto = PlatoProveedor.objects.get(id=producto_id)
+    v_carrito.restar(producto)
+    return redirect("carrito")
+
+def limpiar_carrito(request):
+    v_carrito = Carrito(request)
+    v_carrito.limpiar()
+    return redirect("carrito")
 
 def menu(request):
     return render(request, 'menu.html')

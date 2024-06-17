@@ -33,7 +33,7 @@ class PlatoProveedor(models.Model):
     proveedor = models.ForeignKey(Proveedor, on_delete=models.CASCADE)
     nombre_plato = models.CharField('Nombre del plato', max_length=100, blank=False, null=False)
     descripcion = models.TextField()
-    precio = models.DecimalField('Precio', max_digits=10, decimal_places=2, blank=False, null=False)
+    precio = models.IntegerField('Precio')
     stock = models.IntegerField()
     disponibilidad = models.BooleanField('Disponibilidad', default=True, blank=False, null=False) #mi no entender
     imagen = models.ImageField('Imagen del plato', upload_to='Alimentos_Santiago/media/platos/', blank=True, null=True)
@@ -75,8 +75,7 @@ class Repartidores(models.Model):
     def __str__(self):
         return f"Rut Repartidor : {self.rut} | Nombre del Repartidor : {self.nombre} | Disponibilidad : {self.disponibilidad}"
     
- #CARRITO   
-
+#CARRITO   
 class Carrito(models.Model):
     usuario = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     creado_en = models.DateTimeField(auto_now_add=True)
