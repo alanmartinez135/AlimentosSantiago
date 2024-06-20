@@ -489,6 +489,11 @@ span{
   margin-bottom: 10px;
 }
 
+.badge-dark{
+  border-radius: 20px;
+  width: 35px;
+}
+
 /* .color1 {color: #62adf9;}
    .color3 {color: #bee0ff;}
    .color1 {color: #103548;}
