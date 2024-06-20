@@ -48,7 +48,7 @@
                           <p><b>Correo electrónico:</b> {{ request.user.email }}</p>
                           {% if user_profile %}
                             <p><b>RUN :</b> {{ user_profile.run }}</p>
-                            <p><b>Saldo :</b> {{ user_profile.saldo }}</p>
+                            <p><b>Saldo : $</b> {{ user_profile.saldo }}</p>
                             <p><b>Usuario :</b> {{ user_profile.role }}</p>
                             <p><b>Empresa : </b>{% for empresa in empresas %}
                                                   {{ empresa.nombre }}
@@ -66,7 +66,7 @@
                 <a class="btn btn-primary" href="{% url 'logout' %}">Cerrar sesión</a>
               {% endif %}
               <!-- imagen carrito -->
-              <a href="{% url 'carrito'%}">
+              <!-- <a href="">
                 <button id="carrito1" type="button" class="btn" onclick="abrirCarrito()">
                   <img src="{% static 'img/carrito.png'%}" width="40px">
                   <span id="cantidadCarrito" class="badge bg-danger rounded-pill">0</span>
@@ -94,7 +94,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         <!-- BARRA NAVEGACION -->
@@ -106,9 +106,9 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
-                  <li class="nav-item item_arriba">
+                  <!-- <li class="nav-item item_arriba">
                     <a class="nav-link active" aria-current="page" href="#OFERTAS"><img src="{% static 'img/icono2.png'%}" width="30px">OFERTAS</a>
-                  </li>
+                  </li> -->
                   <li class="nav-item item_arriba">
                     <a class="nav-link active" aria-current="page" href="{% url 'menu' %}"><img src="{% static 'img/icono2.png'%}" width="30px">MENÚ</a>
                   </li>
@@ -149,7 +149,7 @@
       </div>
       <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3 text-center">
           <img class="img-circulo" src="{% static 'img/Peru.png'%}"alt="" width="200px">
-          <p class="p-img-circulo">PERÚ</p>
+          <p class="p-img-circulo">PERU</p>
       </div>
       <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3 text-center">
           <img class="img-circulo" src="{% static 'img/Italia.png'%}" alt="" width="200px">
@@ -243,16 +243,16 @@
 
 
   <!--VER MAS -->
-  <div class="container" id="CCO">
+  <!-- <div class="container" id="CCO"> -->
     <!-- <div class="vermas-arriba-circulos">
       <a href="{% url 'menu' %}">
         <button class="btn btn-custom-purple ">Ver mas</button>
       </a>
     </div> -->
-    <br>
-    <div class="row">
+    <!-- <br>
+    <div class="row"> -->
       <!-- OFERTAS -->
-      <div class="col-12 " id="OFERTAS">
+      <!-- <div class="col-12 " id="OFERTAS">
         <h1>OFERTAS</h1>
         <div class="container cont-cartas ">
           {% for plato in platos %}
@@ -274,7 +274,7 @@
             </div>
           </div>
           <br>
-          {% endfor %}
+          {% endfor %} -->
 
           <!-- Hasta aqui es para obtener los datos de los productos desde la base de datos -->
           
@@ -291,11 +291,11 @@
             </div> -->
             <!-- esta es la carta que funciona con el carrito para tener como ejemplo -->
 
-          </div>
+          <!-- </div>
         </div>
-      </div>
-    </div> <!--div row-->
-  </div> <!--div container-->
+      </div> -->
+    <!-- </div> div row -->
+  <!-- </div> div container -->
 
 
   <!-- CARUUSEL DE ABAJO-->
@@ -414,4 +414,4 @@
         </div><!--div col-->
       </div> <!--div row-->
       </div> <!--div container-->
-{% endblock %}
+{% endblock %}

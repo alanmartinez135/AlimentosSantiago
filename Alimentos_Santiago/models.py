@@ -12,6 +12,16 @@ class UserProfile(models.Model):
     def __str__(self):
         return f'{self.user.username} - {self.role}'
     
+
+class Empresa(models.Model):
+    nombre = models.CharField(max_length=20, verbose_name='Nombre de la empresa')
+    run_empleado = models.ManyToManyField(UserProfile, related_name='empresa')
+    # platos_disponibles = models.ManyToManyField(PlatoProveedor, related_name='plato_empresa')
+    rut = models.CharField(max_length=12, unique=True) # rut de la empresa 
+    direccion = models.CharField(max_length=50) # direccion de la empresa
+    def __str__(self):
+        return self.nombre
+    
 class Proveedor(models.Model):
     nombre = models.CharField('Nombre proveedor', max_length=50, blank=False, null=False)
     pais = models.CharField('País', max_length=25, blank=False, null=False) # PAIS????
@@ -46,14 +56,15 @@ class PlatoProveedor(models.Model):
     def __str__(self):
         return f"{self.id} | Nombre plato : {self.nombre_plato} | Nombre proveedor : {self.proveedor.nombre} "
     
-class Empresa(models.Model):
-    nombre = models.CharField(max_length=20, verbose_name='Nombre de la empresa')
-    run_empleado = models.ManyToManyField(UserProfile, related_name='empresa')
-    # platos_disponibles = models.ManyToManyField(PlatoProveedor, related_name='plato_empresa')
-    rut = models.CharField(max_length=12, unique=True) # rut de la empresa 
-    direccion = models.CharField(max_length=50) # direccion de la empresa
+class DetalleCompra(models.Model):
+    producto = models.ForeignKey(PlatoProveedor, on_delete=models.CASCADE)
+    cantidad = models.IntegerField()
+    precio_total = models.DecimalField(max_digits=10, decimal_places=2)
+    tipo_despacho = models.CharField(max_length=50)
+    fecha_compra = models.DateTimeField()
+
     def __str__(self):
-        return self.nombre
+        return f"Compra de {self.producto.nombre} - {self.cantidad} unidades"
 
 #agregaro desde rama proveedores
 

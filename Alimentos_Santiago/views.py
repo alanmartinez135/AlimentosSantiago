@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .decorators import role_required
 from Alimentos_Santiago.Carrito import Carrito
+from django.utils import timezone
 
 # Create your views here.
 
@@ -29,11 +30,23 @@ def inicio(request):
 #     else:
 #         platos = PlatoProveedor.objects.filter(disponibilidad=True)
 
-    platos = PlatoProveedor.objects.filter(stock__gt=0)
+    platos = PlatoProveedor.objects.filter(stock__gt=0,disponibilidad=True)
+
+    user_profile = None
+    empresas = []
+
+    if request.user.is_authenticated:
+        try:
+            user_profile = UserProfile.objects.get(user=request.user)
+            empresas = user_profile.empresa.all()
+        except UserProfile.DoesNotExist:
+            user_profile = None
 
     context = {
         'perfil': perfil,
         'platos': platos,
+        'user_profile': user_profile,
+        'empresas': empresas,
     }
 
     return render(request, 'public/inicio.html', context)
@@ -105,6 +118,7 @@ def detalle_plato(request, id):
 # def carrito(request):
 #     return render(request, 'public/carrito.html')
 
+
 def carro(request):
     productos = PlatoProveedor.objects.all()
     return render(request, "public/carrito.html", {"productos":productos})
@@ -142,13 +156,84 @@ def limpiar_carrito(request):
     v_carrito.limpiar()
     return redirect("menu")
 
+
+def pago(request):
+    if request.method == "POST":
+        # Procesar la selección de despacho y método de pago
+        despacho = request.POST['despacho']
+        metodo_pago = request.POST['metodo_pago']
+        
+        # Obtener los productos del carrito
+        carrito = request.session.get('carrito', {})
+        
+        # Guardar los detalles de la compra
+        for key, value in carrito.items():
+            producto = PlatoProveedor.objects.get(id=value['producto_id'])
+            DetalleCompra.objects.create(
+                producto=producto,
+                cantidad=value['cantidad'],
+                precio_total=value['acumulado'],
+                tipo_despacho=despacho,
+                fecha_compra=timezone.now()
+            )
+        
+        # Limpiar el carrito después de la compra
+        v_carrito = Carrito(request)
+        v_carrito.limpiar()
+        
+        return redirect('confirmacion')
+
+    return render(request, 'public/pago.html')
+
+
+def confirmacion(request):
+    return render(request, 'public/confirmacion.html')
+
+
+
+
+
+
 def menu(request):
+       # Para que se muestren los platos que la empresa requeria de platos
+#    user = request.user
+    perfil = request.session.get('perfil')
+#     if user.is_authenticated:
+#         try:
+#             user_profile = UserProfile.objects.get(user=user)
+#             empresa = user_profile.empresa.first()  # Obtener la primera empresa asociada al perfil
+#         except UserProfile.DoesNotExist:
+#             user_profile = None
+#             empresa = None
+
+#         if empresa:
+#             platos = empresa.platos_disponibles.filter(disponibilidad=True)
+#         else:
+#             platos = PlatoProveedor.objects.filter(disponibilidad=True)
+#     else:
+#         platos = PlatoProveedor.objects.filter(disponibilidad=True)
+
     platos = PlatoProveedor.objects.filter(stock__gt=0,disponibilidad=True)
+
+    user_profile = None
+    empresas = []
+
+    if request.user.is_authenticated:
+        try:
+            user_profile = UserProfile.objects.get(user=request.user)
+            empresas = user_profile.empresa.all()
+        except UserProfile.DoesNotExist:
+            user_profile = None
+
     context = {
+        'perfil': perfil,
         'platos': platos,
+        'user_profile': user_profile,
+        'empresas': empresas,
     }
 
     return render(request, 'menu.html', context)
+
 
 def chile(request):
     return render(request, 'chile.html')
@@ -166,4 +251,40 @@ def peru(request):
     return render(request, 'peru.html')
 
 def preguntasFrecuentes(request):
-    return render(request, 'preguntasFrecuentes.html')
+           # Para que se muestren los platos que la empresa requeria de platos
+#    user = request.user
+    perfil = request.session.get('perfil')
+#     if user.is_authenticated:
+#         try:
+#             user_profile = UserProfile.objects.get(user=user)
+#             empresa = user_profile.empresa.first()  # Obtener la primera empresa asociada al perfil
+#         except UserProfile.DoesNotExist:
+#             user_profile = None
+#             empresa = None
+
+#         if empresa:
+#             platos = empresa.platos_disponibles.filter(disponibilidad=True)
+#         else:
+#             platos = PlatoProveedor.objects.filter(disponibilidad=True)
+#     else:
+#         platos = PlatoProveedor.objects.filter(disponibilidad=True)
+
+    platos = PlatoProveedor.objects.filter(stock__gt=0,disponibilidad=True)
+
+    user_profile = None
+    empresas = []
+
+    if request.user.is_authenticated:
+        try:
+            user_profile = UserProfile.objects.get(user=request.user)
+            empresas = user_profile.empresa.all()
+        except UserProfile.DoesNotExist:
+            user_profile = None
+
+    context = {
+        'perfil': perfil,
+        'platos': platos,
+        'user_profile': user_profile,
+        'empresas': empresas,
+    }
+    return render(request, 'preguntasFrecuentes.html', context)
