@@ -2,9 +2,14 @@
 
 {% load static %}
 
+{% block styles %}
+<link rel="stylesheet" href="{% static '/css/style-carrito.css/' %}">
+{% endblock %}
 {% block content %}
+
   <!-- LOGO     BARRA DE BUSQUEDA      BARRA NAVEGACION-->
   <div class="container-fluid" id="barra_principal">
+    
     <div class="row">
       <!-- LOGO -->
       <div class="container col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
@@ -93,103 +98,44 @@
           <hr>
         </div>
       </div>
-
+      <div class="row rectangulo">
+        <div class="col-1"></div>
+        <div class="detalle col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+          <div class="rectangulo-derecho sticky-top" >
+              <h3>Detalles</h3>
+                {% include 'public/descrip_carrito.html' %}
+              <hr>
+          </div>
+        </div>
+        <div class="col-1"></div>
+      </div>
       <!-- ENTRADAS  -->
       <div class="col-12" id="ENTRADAS">
   
-        <div class="container cont-cartas">
-          <h3>ENTRADAS</h3>
-
-          <div class="row row-cols-1 row-cols-md-4 g-4">
-            <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-              <div class="card h-100">
-                <img src="{% static 'img/1366_2000 (1).jpg'%}" class="card-img-top producto-imagen" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">ALMUERZO</h5>
-                  <p class="card-text">Escribir la descripcion aqui</p>
-                  <p class="producto-precio">$6.990</p>
-                </div>
-                <button type="button" class="btn btn-custom-purple producto-agregar" data-id="1">Agregar al carrito</button>
+        <h3>ENTRADAS</h3>
+          <div class="container cont-cartas ">
+            {% for plato in platos %}
+  
+            <div class="card" style="width: 18rem;">
+  
+              {% if plato.imagen %}
+                  <img src="{{ plato.imagen.url }}" class="card-img-top producto-imagen" alt="Imagen del plato">
+              {% else %}
+                  <span>No hay foto disponible</span>
+              {% endif %}
+  
+              <div class="card-body">
+                <h5 class="card-title">{{ plato.nombre_plato }}</h5>
+                <hr>
+                <p class="card-text">{{ plato.descripcion }}</p>
+                <p class="card-text">$ {{ plato.precio }}</p>
+                <center><a href="{% url 'add' plato.id %}" class="btn btn-primary " aria-current="page">Agregar al carrito</a></center>
               </div>
             </div>
-            
-            <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-              <div class="card h-100">
-                <img src="{% static 'img/1366_2000.jpg'%}" class="card-img-top producto-imagen" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">ALMUERZO</h5>
-                  <p class="card-text">Escribir la descripcion aqui</p>
-                  <p class="producto-precio">$7.590</p>
-                </div>
-                <button type="button" class="btn btn-custom-purple producto-agregar" data-id="2">Agregar al carrito</button>
-              </div>
+            <br>
+              {% endfor %}
             </div>
-            <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-              <div class="card h-100">
-                <img src="{% static 'img/8989c8faf3fc4093f3bc63eacee40187.jpeg'%}" class="card-img-top producto-imagen" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">ALMUERZO</h5>
-                  <p class="card-text">Escribir la descripcion aqui</p>
-                  <p class="producto-precio">$51.990</p>
-                </div>
-                <button type="button" class="btn btn-custom-purple producto-agregar" data-id="3">Agregar al carrito</button>
-              </div>
-            </div>
-            <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-              <div class="card h-100">
-                <img src="{% static 'img/cazuela-1140x760.png'%}" class="card-img-top producto-imagen" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">ALMUERZO</h5>
-                  <p class="card-text">Escribir la descripcion aqui</p>
-                  <p class="producto-precio">$4.990</p>        
-                </div>
-                <button type="button" class="btn btn-custom-purple producto-agregar" data-id="4">Agregar al carrito</button>
-              </div>
-            </div>
-            <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-              <div class="card h-100">
-                <img src="{% static 'img/chuletas-de-cerdo-asadas.jpg'%}" class="card-img-top producto-imagen" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">ALMUERZO</h5>
-                  <p class="card-text">Escribir la descripcion aqui</p>
-                  <p class="producto-precio">$10.990</p>
-                </div>
-                <button type="button" class="btn btn-custom-purple producto-agregar" data-id="5">Agregar al carrito</button>
-              </div>
-            </div>
-            <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-              <div class="card h-100">
-                <img src="{% static 'img/grilled-lemon-herb-chicken.jpg'%}" class="card-img-top producto-imagen" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">ALMUERZO</h5>
-                  <p class="card-text">Escribir la descripcion aqui</p>
-                  <p class="producto-precio">$30.990</p>
-                </div>
-                <button type="button" class="btn btn-custom-purple producto-agregar" data-id="6"> Agregar al carrito</button>
-              </div>
-            </div>
-            <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-              <div class="card h-100">
-                <img src="{% static 'img/palta-rellena-con-pollo.jpg'%}" class="card-img-top producto-imagen" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">ALMUERZO</h5>
-                  <p class="card-text">Escribir la descripcion aqui</p>
-                  <p class="producto-precio">$6.990</p>
-                </div>
-                <button type="button" class="btn btn-custom-purple producto-agregar" data-id="1">Agregar al carrito</button>
-              </div>
-            </div>
-            <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-              <div class="card h-100">
-                <img src="{% static 'img/pastel-de-papas.jpg'%}" class="card-img-top producto-imagen" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">ALMUERZO</h5>
-                  <p class="card-text">Escribir la descripcion aqui</p>
-                  <p class="producto-precio">$6.990</p>
-                </div>
-                <button type="button" class="btn btn-custom-purple producto-agregar" data-id="1">Agregar al carrito</button>
-              </div>
-            </div>
+          
 
           </div>
         </div>
@@ -198,103 +144,32 @@
   </div> <!--div container-->
 
 
-    
       <!-- PLATOS DE FONDO  -->
       <div class="col-12" id="PFONDO">
-       <br> 
-        <div class="container cont-cartas">
-          <h3>PLATOS DE FONDO</h3>
-          
-          <div "contenedor-ofertas" class="row row-cols-1 row-cols-md-4 g-4">
-            <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-              <div class="card h-100">
-                <img src="{% static 'img/1366_2000 (1).jpg'%}" class="card-img-top producto-imagen" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">ALMUERZO</h5>
-                  <p class="card-text">Escribir la descripcion aqui</p>
-                  <p class="producto-precio">$6.990</p>
-                </div>
-                <button type="button" class="btn btn-custom-purple producto-agregar" data-id="1">Agregar al carrito</button>
-              </div>
+        <br> 
+        <h3>PLATOS DE FONDO</h3>
+        <div class="container cont-cartas ">
+          {% for plato in platos %}
+
+          <div class="card" style="width: 18rem;">
+
+            {% if plato.imagen %}
+                <img src="{{ plato.imagen.url }}" class="card-img-top producto-imagen" alt="Imagen del plato">
+            {% else %}
+                <span>No hay foto disponible</span>
+            {% endif %}
+
+            <div class="card-body">
+              <h5 class="card-title">{{ plato.nombre_plato }}</h5>
+              <hr>
+              <p class="card-text">{{ plato.descripcion }}</p>
+              <p class="card-text">$ {{ plato.precio }}</p>
+              <center><a href="{% url 'add' plato.id %}" class="btn btn-primary " aria-current="page">Agregar al carrito</a></center>
             </div>
-            
-            <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-              <div class="card h-100">
-                <img src="{% static 'img/1366_2000.jpg'%}" class="card-img-top producto-imagen" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">ALMUERZO</h5>
-                  <p class="card-text">Escribir la descripcion aqui</p>
-                  <p class="producto-precio">$7.590</p>
-                </div>
-                <button type="button" class="btn btn-custom-purple producto-agregar" data-id="2">Agregar al carrito</button>
-              </div>
-            </div>
-            <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-              <div class="card h-100">
-                <img src="{% static 'img/8989c8faf3fc4093f3bc63eacee40187.jpeg'%}" class="card-img-top producto-imagen" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">ALMUERZO</h5>
-                  <p class="card-text">Escribir la descripcion aqui</p>
-                  <p class="producto-precio">$51.990</p>
-                </div>
-                <button type="button" class="btn btn-custom-purple producto-agregar" data-id="3">Agregar al carrito</button>
-              </div>
-            </div>
-            <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-              <div class="card h-100">
-                <img src="{% static 'img/cazuela-1140x760.png'%}" class="card-img-top producto-imagen" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">ALMUERZO</h5>
-                  <p class="card-text">Escribir la descripcion aqui</p>
-                  <p class="producto-precio">$4.990</p>        
-                </div>
-                <button type="button" class="btn btn-custom-purple producto-agregar" data-id="4">Agregar al carrito</button>
-              </div>
-            </div>
-            <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-              <div class="card h-100">
-                <img src="{% static 'img/chuletas-de-cerdo-asadas.jpg'%}" class="card-img-top producto-imagen" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">ALMUERZO</h5>
-                  <p class="card-text">Escribir la descripcion aqui</p>
-                  <p class="producto-precio">$10.990</p>
-                </div>
-                <button type="button" class="btn btn-custom-purple producto-agregar" data-id="5">Agregar al carrito</button>
-              </div>
-            </div>
-            <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-              <div class="card h-100">
-                <img src="{% static 'img/grilled-lemon-herb-chicken.jpg'%}" class="card-img-top producto-imagen" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">ALMUERZO</h5>
-                  <p class="card-text">Escribir la descripcion aqui</p>
-                  <p class="producto-precio">$30.990</p>
-                </div>
-                <button type="button" class="btn btn-custom-purple producto-agregar" data-id="6"> Agregar al carrito</button>
-              </div>
-            </div>
-            <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-              <div class="card h-100">
-                <img src="{% static 'img/palta-rellena-con-pollo.jpg'%}" class="card-img-top producto-imagen" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">ALMUERZO</h5>
-                  <p class="card-text">Escribir la descripcion aqui</p>
-                  <p class="producto-precio">$6.990</p>
-                </div>
-                <button type="button" class="btn btn-custom-purple producto-agregar" data-id="1">Agregar al carrito</button>
-              </div>
-            </div>
-            <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-              <div class="card h-100">
-                <img src="{% static 'img/pastel-de-papas.jpg'%}" class="card-img-top producto-imagen" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">ALMUERZO</h5>
-                  <p class="card-text">Escribir la descripcion aqui</p>
-                  <p class="producto-precio">$6.990</p>
-                </div>
-                <button type="button" class="btn btn-custom-purple producto-agregar" data-id="1">Agregar al carrito</button>
-              </div>
-            </div>
+          </div>
+          <br>
+            {% endfor %}
+          </div>
 
           </div>
         </div>
@@ -307,99 +182,29 @@
    <!-- POSTRES  -->
    <div class="col-12" id="POSTRES">
     <br> 
-    <div class="container cont-cartas">
-      <h3>POSTRES</h3>
+    <h3>POSTRES</h3>
+      <div class="container cont-cartas ">
+        {% for plato in platos %}
 
-      <div "contenedor-ofertas" class="row row-cols-1 row-cols-md-4 g-4">
-      <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-        <div class="card h-100">
-          <img src="{% static 'img/1366_2000 (1).jpg'%}" class="card-img-top producto-imagen" alt="...">
+        <div class="card" style="width: 18rem;">
+
+          {% if plato.imagen %}
+              <img src="{{ plato.imagen.url }}" class="card-img-top producto-imagen" alt="Imagen del plato">
+          {% else %}
+              <span>No hay foto disponible</span>
+          {% endif %}
+
           <div class="card-body">
-            <h5 class="card-title">ALMUERZO</h5>
-            <p class="card-text">Escribir la descripcion aqui</p>
-            <p class="producto-precio">$6.990</p>
+            <h5 class="card-title">{{ plato.nombre_plato }}</h5>
+            <hr>
+            <p class="card-text">{{ plato.descripcion }}</p>
+            <p class="card-text">$ {{ plato.precio }}</p>
+            <center><a href="{% url 'add' plato.id %}" class="btn btn-primary " aria-current="page">Agregar al carrito</a></center>
           </div>
-          <button type="button" class="btn btn-custom-purple producto-agregar" data-id="1">Agregar al carrito</button>
         </div>
-      </div>
-      
-      <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-        <div class="card h-100">
-          <img src="{% static 'img/1366_2000.jpg'%}" class="card-img-top producto-imagen" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">ALMUERZO</h5>
-            <p class="card-text">Escribir la descripcion aqui</p>
-            <p class="producto-precio">$7.590</p>
-          </div>
-          <button type="button" class="btn btn-custom-purple producto-agregar" data-id="2">Agregar al carrito</button>
+        <br>
+          {% endfor %}
         </div>
-      </div>
-      <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-        <div class="card h-100">
-          <img src="{% static 'img/8989c8faf3fc4093f3bc63eacee40187.jpeg'%}" class="card-img-top producto-imagen" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">ALMUERZO</h5>
-            <p class="card-text">Escribir la descripcion aqui</p>
-            <p class="producto-precio">$51.990</p>
-          </div>
-          <button type="button" class="btn btn-custom-purple producto-agregar" data-id="3">Agregar al carrito</button>
-        </div>
-      </div>
-      <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-        <div class="card h-100">
-          <img src="{% static 'img/cazuela-1140x760.png'%}" class="card-img-top producto-imagen" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">ALMUERZO</h5>
-            <p class="card-text">Escribir la descripcion aqui</p>
-            <p class="producto-precio">$4.990</p>        
-          </div>
-          <button type="button" class="btn btn-custom-purple producto-agregar" data-id="4">Agregar al carrito</button>
-        </div>
-      </div>
-      <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-        <div class="card h-100">
-          <img src="{% static 'img/chuletas-de-cerdo-asadas.jpg'%}" class="card-img-top producto-imagen" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">ALMUERZO</h5>
-            <p class="card-text">Escribir la descripcion aqui</p>
-            <p class="producto-precio">$10.990</p>
-          </div>
-          <button type="button" class="btn btn-custom-purple producto-agregar" data-id="5">Agregar al carrito</button>
-        </div>
-      </div>
-      <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-        <div class="card h-100">
-          <img src="{% static 'img/grilled-lemon-herb-chicken.jpg'%}" class="card-img-top producto-imagen" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">ALMUERZO</h5>
-            <p class="card-text">Escribir la descripcion aqui</p>
-            <p class="producto-precio">$30.990</p>
-          </div>
-          <button type="button" class="btn btn-custom-purple producto-agregar" data-id="6"> Agregar al carrito</button>
-        </div>
-      </div>
-      <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-        <div class="card h-100">
-          <img src="{% static 'img/palta-rellena-con-pollo.jpg'%}" class="card-img-top producto-imagen" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">ALMUERZO</h5>
-            <p class="card-text">Escribir la descripcion aqui</p>
-            <p class="producto-precio">$6.990</p>
-          </div>
-          <button type="button" class="btn btn-custom-purple producto-agregar" data-id="1">Agregar al carrito</button>
-        </div>
-      </div>
-      <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-        <div class="card h-100">
-          <img src="{% static 'img/pastel-de-papas.jpg'%}" class="card-img-top producto-imagen" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">ALMUERZO</h5>
-            <p class="card-text">Escribir la descripcion aqui</p>
-            <p class="producto-precio">$6.990</p>
-          </div>
-          <button type="button" class="btn btn-custom-purple producto-agregar" data-id="1">Agregar al carrito</button>
-        </div>
-      </div>
 
       </div>
     </div>
@@ -411,104 +216,37 @@
  <!-- BEBESTIBLES  -->
  <div class="col-12" id="BEBESTIBLES">
   <br> 
-  <div class="container cont-cartas">
-    <h3>BEBESTIBLES</h3>
-   <div "contenedor-ofertas" class="row row-cols-1 row-cols-md-4 g-4">
-      <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-        <div class="card h-100">
-          <img src="{% static 'img/1366_2000 (1).jpg'%}" class="card-img-top producto-imagen" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">ALMUERZO</h5>
-            <p class="card-text">Escribir la descripcion aqui</p>
-            <p class="producto-precio">$6.990</p>
-          </div>
-          <button type="button" class="btn btn-custom-purple producto-agregar" data-id="1">Agregar al carrito</button>
-        </div>
+  <h3>BEBESTIBLES</h3>
+  <div class="container cont-cartas ">
+    {% for plato in platos %}
+
+    <div class="card" style="width: 18rem;">
+
+      {% if plato.imagen %}
+          <img src="{{ plato.imagen.url }}" class="card-img-top producto-imagen" alt="Imagen del plato">
+      {% else %}
+          <span>No hay foto disponible</span>
+      {% endif %}
+
+      <div class="card-body">
+        <h5 class="card-title">{{ plato.nombre_plato }}</h5>
+        <hr>
+        <p class="card-text">{{ plato.descripcion }}</p>
+        <p class="card-text">$ {{ plato.precio }}</p>
+        <center><a href="{% url 'add' plato.id %}" class="btn btn-primary " aria-current="page">Agregar al carrito</a></center>
       </div>
-      
-      <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-        <div class="card h-100">
-          <img src="{% static 'img/1366_2000.jpg'%}" class="card-img-top producto-imagen" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">ALMUERZO</h5>
-            <p class="card-text">Escribir la descripcion aqui</p>
-            <p class="producto-precio">$7.590</p>
-          </div>
-          <button type="button" class="btn btn-custom-purple producto-agregar" data-id="2">Agregar al carrito</button>
-        </div>
-      </div>
-      <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-        <div class="card h-100">
-          <img src="{% static 'img/8989c8faf3fc4093f3bc63eacee40187.jpeg'%}" class="card-img-top producto-imagen" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">ALMUERZO</h5>
-            <p class="card-text">Escribir la descripcion aqui</p>
-            <p class="producto-precio">$51.990</p>
-          </div>
-          <button type="button" class="btn btn-custom-purple producto-agregar" data-id="3">Agregar al carrito</button>
-        </div>
-      </div>
-      <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-        <div class="card h-100">
-          <img src="{% static 'img/cazuela-1140x760.png'%}" class="card-img-top producto-imagen" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">ALMUERZO</h5>
-            <p class="card-text">Escribir la descripcion aqui</p>
-            <p class="producto-precio">$4.990</p>        
-          </div>
-          <button type="button" class="btn btn-custom-purple producto-agregar" data-id="4">Agregar al carrito</button>
-        </div>
-      </div>
-      <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-        <div class="card h-100">
-          <img src="{% static 'img/chuletas-de-cerdo-asadas.jpg'%}" class="card-img-top producto-imagen" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">ALMUERZO</h5>
-            <p class="card-text">Escribir la descripcion aqui</p>
-            <p class="producto-precio">$10.990</p>
-          </div>
-          <button type="button" class="btn btn-custom-purple producto-agregar" data-id="5">Agregar al carrito</button>
-        </div>
-      </div>
-      <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-        <div class="card h-100">
-          <img src="{% static 'img/grilled-lemon-herb-chicken.jpg'%}" class="card-img-top producto-imagen" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">ALMUERZO</h5>
-            <p class="card-text">Escribir la descripcion aqui</p>
-            <p class="producto-precio">$30.990</p>
-          </div>
-          <button type="button" class="btn btn-custom-purple producto-agregar" data-id="6"> Agregar al carrito</button>
-        </div>
-      </div>
-      <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-        <div class="card h-100">
-          <img src="{% static 'img/palta-rellena-con-pollo.jpg'%}" class="card-img-top producto-imagen" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">ALMUERZO</h5>
-            <p class="card-text">Escribir la descripcion aqui</p>
-            <p class="producto-precio">$6.990</p>
-          </div>
-          <button type="button" class="btn btn-custom-purple producto-agregar" data-id="1">Agregar al carrito</button>
-        </div>
-      </div>
-      <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-3">
-        <div class="card h-100">
-          <img src="{% static 'img/pastel-de-papas.jpg'%}" class="card-img-top producto-imagen" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">ALMUERZO</h5>
-            <p class="card-text">Escribir la descripcion aqui</p>
-            <p class="producto-precio">$6.990</p>
-          </div>
-          <button type="button" class="btn btn-custom-purple producto-agregar" data-id="1">Agregar al carrito</button>
-        </div>
-      </div>
+    </div>
+    <br>
+      {% endfor %}
+    </div>
 
     </div>
   </div>
 </div>
 </div> <!--div row-->
 </div> <!--div container-->
+
+
 
 
 
@@ -524,80 +262,66 @@
           </div>
           <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-              
               <div class="carousel-item active">
-                
-                <div class="row row-cols-1 row-cols-md-2 g-4">
-                  <div class="col">
-                    <div class="card ">
-                      <img src="{% static 'img/palta-rellena-con-pollo.jpg'%}" class="card-img-top img-carrusel1" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Almuerzo tal</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, soluta?</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col">
+                <div class="d-flex flex-row">
+                  {% for plato in platos %}
+                  <div class="col mx-2">
                     <div class="card">
-                      <img src="{% static 'img/Salmon-al-horno-con-papas-100x565-1.jpg'%}" class="card-img-top img-carrusel1" alt="...">
+                      {% if plato.imagen %}
+                        <img src="{{ plato.imagen.url }}" class="card-img-top img-carrusel1" alt="...">
+                      {% else %}
+                        <span>No hay foto disponible</span>
+                      {% endif %}
                       <div class="card-body">
-                        <h5 class="card-title">Almuerzo tal</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, soluta?</p>
+                        <h5 class="card-title">{{ plato.nombre_plato }}</h5>
+                        <p class="card-text">{{ plato.descripcion }}</p>
+                        <center><a href="{% url 'add' plato.id %}" class="btn btn-primary " aria-current="page">Agregar al carrito</a></center>
                       </div>
                     </div>
                   </div>
+                  {% endfor %}
                 </div>
-  
-  
               </div>
               <div class="carousel-item">
-  
-                <div class="row row-cols-1 row-cols-md-2 g-4">
-                  <div class="col">
+                <div class="d-flex flex-row">
+                  {% for plato in platos %}
+                  <div class="col mx-2">
                     <div class="card">
-                      <img src="{% static 'img/cazuela-1140x760.png'%}" class="card-img-top img-carrusel1" alt="...">
+                      {% if plato.imagen %}
+                        <img src="{{ plato.imagen.url }}" class="card-img-top img-carrusel1" alt="...">
+                      {% else %}
+                        <span>No hay foto disponible</span>
+                      {% endif %}
                       <div class="card-body">
-                        <h5 class="card-title">Almuerzo tal</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, soluta?</p>
+                        <h5 class="card-title">{{ plato.nombre_plato }}</h5>
+                        <p class="card-text">{{ plato.descripcion }}</p>
+                        <center><a href="{% url 'add' plato.id %}" class="btn btn-primary " aria-current="page">Agregar al carrito</a></center>
                       </div>
                     </div>
                   </div>
-                  <div class="col">
-                    <div class="card">
-                      <img src="{% static 'img/chuletas-de-cerdo-asadas.jpg'%}" class="card-img-top img-carrusel1" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Almuerzo tal</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, soluta?</p>
-                      </div>
-                    </div>
-                  </div>
+                  {% endfor %}
                 </div>
-  
               </div>
               <div class="carousel-item">
-  
-                <div class="row row-cols-1 row-cols-md-2 g-4">
-                  <div class="col">
+                <div class="d-flex flex-row">
+                  {% for plato in platos %}
+                  <div class="col mx-2">
                     <div class="card">
-                      <img src="{% static 'img/Receta-de-Fideos-con-Salsa.jpg'%}" class="card-img-top img-carrusel1" alt="...">
+                      {% if plato.imagen %}
+                        <img src="{{ plato.imagen.url }}" class="card-img-top img-carrusel1" alt="...">
+                      {% else %}
+                        <span>No hay foto disponible</span>
+                      {% endif %}
                       <div class="card-body">
-                        <h5 class="card-title">Almuerzo tal</h5>
-                        <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur, dolor!</p>
+                        <h5 class="card-title">{{ plato.nombre_plato }}</h5>
+                        <p class="card-text">{{ plato.descripcion }}</p>
+                        <center><a href="{% url 'add' plato.id %}" class="btn btn-primary " aria-current="page">Agregar al carrito</a></center>
                       </div>
                     </div>
                   </div>
-                  <div class="col">
-                    <div class="card">
-                      <img src="{% static 'img/sopa.jpg'%}" class="card-img-top img-carrusel1" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Almuerzo tal</h5>
-                        <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur, dolor!</p>
-                      </div>
-                    </div>
-                  </div>
+                  {% endfor %}
+
                 </div>
-  
-  
               </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -621,4 +345,4 @@
 
   {% comment %} <script src="{% static 'Js/carrito.js'%}"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>    
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> {% endcomment %}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> {% endcomment %}

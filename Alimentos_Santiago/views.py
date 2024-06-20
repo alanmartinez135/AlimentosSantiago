@@ -123,27 +123,32 @@ def agregar_producto(request, producto_id):
     v_carrito = Carrito(request)
     producto = PlatoProveedor.objects.get(id=producto_id)
     v_carrito.agregar(producto)
-    return redirect("carrito")
+    return redirect("menu")
 
 def eliminar_producto(request, producto_id):
     v_carrito = Carrito(request)
     producto = PlatoProveedor.objects.get(id=producto_id)
     v_carrito.eliminar(producto)
-    return redirect("carrito")
+    return redirect("menu")
 
 def restar_producto(request, producto_id):
     v_carrito = Carrito(request)
     producto = PlatoProveedor.objects.get(id=producto_id)
     v_carrito.restar(producto)
-    return redirect("carrito")
+    return redirect("menu")
 
 def limpiar_carrito(request):
     v_carrito = Carrito(request)
     v_carrito.limpiar()
-    return redirect("carrito")
+    return redirect("menu")
 
 def menu(request):
-    return render(request, 'menu.html')
+    platos = PlatoProveedor.objects.filter(stock__gt=0,disponibilidad=True)
+    context = {
+        'platos': platos,
+    }
+
+    return render(request, 'menu.html', context)
 
 def chile(request):
     return render(request, 'chile.html')

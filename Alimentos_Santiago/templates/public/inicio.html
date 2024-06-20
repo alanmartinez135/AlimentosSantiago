@@ -30,7 +30,39 @@
                 <a class="btn btn-primary" href="{% url 'iniciosesion' %}">Inicio Sesión</a>
                 <a class="btn btn-primary" href="{% url 'registro' %}">Registrarse</a>
               {% else %}
-                <a name="" id="" class="btn btn-primary" href="#" role="button">{{ request.user.username }}</a>
+                <!-- Button trigger modal -->
+                  <button name="" id="" type="button" class="btn btn-primary" role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    {{ request.user.username }}
+                  </button>
+                  <!-- Modal -->
+                  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="staticBackdropLabel">Mi cuenta</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <h3>Bienvenido {{ request.user.username }}</h3>
+                          <hr>
+                          <p><b>Correo electrónico:</b> {{ request.user.email }}</p>
+                          {% if user_profile %}
+                            <p><b>RUN :</b> {{ user_profile.run }}</p>
+                            <p><b>Saldo :</b> {{ user_profile.saldo }}</p>
+                            <p><b>Usuario :</b> {{ user_profile.role }}</p>
+                            <p><b>Empresa : </b>{% for empresa in empresas %}
+                                                  {{ empresa.nombre }}
+                                                {% endfor %}</p>
+                          {% else %}
+                            <p>No se ha encontrado el perfil del usuario.</p>
+                          {% endif %}
+                      </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 <a class="btn btn-primary" href="{% url 'logout' %}">Cerrar sesión</a>
               {% endif %}
               <!-- imagen carrito -->
@@ -108,20 +140,20 @@
       
       <!-- CIRCULOS  --> 
       <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3 text-center">
-        <a href="{% url 'chile'%}"><img class="img-circulo" src="{% static 'img/comida-tipica-chilena.jpg'%}" alt="" width="200px"></a>
-        <p class="p-img-circulo"><a href="{% url 'chile'%}">CHILE</a></p>
+        <img class="img-circulo" src="{% static 'img/Chile.png'%}" alt="" width="200px">
+        <p class="p-img-circulo">CHILE</p>
       </div>
       <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3 text-center">
-          <a href="{% url 'china'%}"><img class="img-circulo" src="{% static 'img/comida-china.jpg'%}" alt="" width="200px"></a>
-          <p class="p-img-circulo"><a href="{% url 'china'%}">CHINA</a></p>
+          <img class="img-circulo" src="{% static 'img/China.png'%}" alt="" width="200px">
+          <p class="p-img-circulo">CHINA</p>
       </div>
       <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3 text-center">
-          <a href="{% url 'peru'%}"><img class="img-circulo" src="{% static 'img/comida-peruana.jpg'%}"alt="" width="200px"></a>
-          <p class="p-img-circulo"><a href="{% url 'peru'%}">PERU</a></p>
+          <img class="img-circulo" src="{% static 'img/Peru.png'%}"alt="" width="200px">
+          <p class="p-img-circulo">PERÚ</p>
       </div>
       <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3 text-center">
-          <a href="{% url 'italia'%}"><img class="img-circulo" src="{% static 'img/comida-italiana.jpg'%}" alt="" width="200px"></a>
-          <p class="p-img-circulo"><a href="{% url 'italia'%}">ITALIA</a></p>
+          <img class="img-circulo" src="{% static 'img/Italia.png'%}" alt="" width="200px">
+          <p class="p-img-circulo">ITALIA</p>
       </div>
       <hr>
 
@@ -134,78 +166,65 @@
         </div>
         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
-            
             <div class="carousel-item active">
-              
-              <div class="row row-cols-1 row-cols-md-2 g-4">
-                <div class="col">
-                  <div class="card ">
-                    <img src="{% static 'img/palta-rellena-con-pollo.jpg'%}" class="card-img-top img-carrusel1" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Almuerzo tal</h5>
-                      <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, soluta?</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
+              <div class="d-flex flex-row">
+                {% for plato in platos %}
+                <div class="col mx-2">
                   <div class="card">
-                    <img src="{% static 'img/Salmon-al-horno-con-papas-100x565-1.jpg'%}" class="card-img-top img-carrusel1" alt="...">
+                    {% if plato.imagen %}
+                      <img src="{{ plato.imagen.url }}" class="card-img-top img-carrusel1" alt="...">
+                    {% else %}
+                      <span>No hay foto disponible</span>
+                    {% endif %}
                     <div class="card-body">
-                      <h5 class="card-title">Almuerzo tal</h5>
-                      <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, soluta?</p>
+                      <h5 class="card-title">{{ plato.nombre_plato }}</h5>
+                      <p class="card-text">{{ plato.descripcion }}</p>
+                      <center><a href="{% url 'detalle_plato' plato.id %}" class="btn btn-custom-purple">Ver Plato</a></center>
                     </div>
                   </div>
                 </div>
+                {% endfor %}
               </div>
             </div>
             <div class="carousel-item">
-
-              <div class="row row-cols-1 row-cols-md-2 g-4">
-                <div class="col">
+              <div class="d-flex flex-row">
+                {% for plato in platos %}
+                <div class="col mx-2">
                   <div class="card">
-                    <img src="{% static 'img/cazuela-1140x760.png'%}" class="card-img-top img-carrusel1" alt="...">
+                    {% if plato.imagen %}
+                      <img src="{{ plato.imagen.url }}" class="card-img-top img-carrusel1" alt="...">
+                    {% else %}
+                      <span>No hay foto disponible</span>
+                    {% endif %}
                     <div class="card-body">
-                      <h5 class="card-title">Almuerzo tal</h5>
-                      <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, soluta?</p>
+                      <h5 class="card-title">{{ plato.nombre_plato }}</h5>
+                      <p class="card-text">{{ plato.descripcion }}</p>
+                      <center><a href="{% url 'detalle_plato' plato.id %}" class="btn btn-custom-purple">Ver Plato</a></center>
                     </div>
                   </div>
                 </div>
-                <div class="col">
-                  <div class="card">
-                    <img src="{% static 'img/chuletas-de-cerdo-asadas.jpg'%}" class="card-img-top img-carrusel1" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Almuerzo tal</h5>
-                      <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, soluta?</p>
-                    </div>
-                  </div>
-                </div>
+                {% endfor %}
               </div>
-
             </div>
             <div class="carousel-item">
-
-              <div class="row row-cols-1 row-cols-md-2 g-4">
-                <div class="col">
+              <div class="d-flex flex-row">
+                {% for plato in platos %}
+                <div class="col mx-2">
                   <div class="card">
-                    <img src="{% static 'img/Receta-de-Fideos-con-Salsa.jpg'%}" class="card-img-top img-carrusel1" alt="...">
+                    {% if plato.imagen %}
+                      <img src="{{ plato.imagen.url }}" class="card-img-top img-carrusel1" alt="...">
+                    {% else %}
+                      <span>No hay foto disponible</span>
+                    {% endif %}
                     <div class="card-body">
-                      <h5 class="card-title">Almuerzo tal</h5>
-                      <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur, dolor!</p>
+                      <h5 class="card-title">{{ plato.nombre_plato }}</h5>
+                      <p class="card-text">{{ plato.descripcion }}</p>
+                      <center><a href="{% url 'detalle_plato' plato.id %}" class="btn btn-custom-purple">Ver Plato</a></center>
                     </div>
                   </div>
                 </div>
-                <div class="col">
-                  <div class="card">
-                    <img src="{% static 'img/sopa.jpg'%}" class="card-img-top img-carrusel1" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Almuerzo tal</h5>
-                      <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur, dolor!</p>
-                    </div>
-                  </div>
-                </div>
+                {% endfor %}
               </div>
-
-
             </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -217,6 +236,7 @@
             <span class="visually-hidden">Next</span>
           </button>
         </div>
+        
       </div> <!--div col-->
     </div> <!--div row-->
   </div> <!--div container-->
@@ -224,16 +244,16 @@
 
   <!--VER MAS -->
   <div class="container" id="CCO">
-    <div class="vermas-arriba-circulos">
+    <!-- <div class="vermas-arriba-circulos">
       <a href="{% url 'menu' %}">
         <button class="btn btn-custom-purple ">Ver mas</button>
       </a>
-    </div>
-
+    </div> -->
+    <br>
     <div class="row">
       <!-- OFERTAS -->
       <div class="col-12 " id="OFERTAS">
-        <h1>Lista de productos</h1>
+        <h1>OFERTAS</h1>
         <div class="container cont-cartas ">
           {% for plato in platos %}
 
@@ -247,9 +267,10 @@
 
             <div class="card-body">
               <h5 class="card-title">{{ plato.nombre_plato }}</h5>
+              <hr>
               <p class="card-text">{{ plato.descripcion }}</p>
-              <p class="card-text">{{ plato.precio }}</p>
-              <center><a href="{% url 'detalle_plato' plato.id  %}" class="btn btn-primary">Ver Plato</a></center>
+              <p class="card-text"> $ {{ plato.precio }} </p>
+              <center><a href="{% url 'detalle_plato' plato.id  %}" class="btn btn-custom-purple">Ver Plato</a></center>
             </div>
           </div>
           <br>
@@ -275,6 +296,7 @@
       </div>
     </div> <!--div row-->
   </div> <!--div container-->
+
 
   <!-- CARUUSEL DE ABAJO-->
   <div class="container" id="CCO">
@@ -392,4 +414,4 @@
         </div><!--div col-->
       </div> <!--div row-->
       </div> <!--div container-->
-{% endblock %}
+{% endblock %}
