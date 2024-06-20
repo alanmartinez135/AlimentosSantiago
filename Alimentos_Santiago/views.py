@@ -11,11 +11,6 @@ from django.utils import timezone
 from django.db import transaction
 
 
-
-
-
-
-
 # Create your views here.
 
 def inicio(request):
@@ -372,7 +367,43 @@ def china(request):
     return render(request, 'china.html')
 
 def nosotros(request):
-    return render(request, 'nosotros.html')
+               # Para que se muestren los platos que la empresa requeria de platos
+#    user = request.user
+    perfil = request.session.get('perfil')
+#     if user.is_authenticated:
+#         try:
+#             user_profile = UserProfile.objects.get(user=user)
+#             empresa = user_profile.empresa.first()  # Obtener la primera empresa asociada al perfil
+#         except UserProfile.DoesNotExist:
+#             user_profile = None
+#             empresa = None
+
+#         if empresa:
+#             platos = empresa.platos_disponibles.filter(disponibilidad=True)
+#         else:
+#             platos = PlatoProveedor.objects.filter(disponibilidad=True)
+#     else:
+#         platos = PlatoProveedor.objects.filter(disponibilidad=True)
+
+    platos = PlatoProveedor.objects.filter(stock__gt=0,disponibilidad=True)
+
+    user_profile = None
+    empresas = []
+
+    if request.user.is_authenticated:
+        try:
+            user_profile = UserProfile.objects.get(user=request.user)
+            empresas = user_profile.empresa.all()
+        except UserProfile.DoesNotExist:
+            user_profile = None
+
+    context = {
+        'perfil': perfil,
+        'platos': platos,
+        'user_profile': user_profile,
+        'empresas': empresas,
+    }
+    return render(request, 'nosotros.html', context)
 
 def peru(request):
     return render(request, 'peru.html')
