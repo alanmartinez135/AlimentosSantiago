@@ -8,6 +8,13 @@ from django.contrib.auth.decorators import login_required
 from .decorators import role_required
 from Alimentos_Santiago.Carrito import Carrito
 from django.utils import timezone
+from django.db import transaction
+
+
+
+
+
+
 
 # Create your views here.
 
@@ -120,8 +127,26 @@ def detalle_plato(request, id):
 
 
 def carro(request):
-    productos = PlatoProveedor.objects.all()
-    return render(request, "public/carrito.html", {"productos":productos})
+    perfil = request.session.get('perfil')
+    platos = PlatoProveedor.objects.filter(stock__gt=0,disponibilidad=True)
+
+    user_profile = None
+    empresas = []
+
+    if request.user.is_authenticated:
+        try:
+            user_profile = UserProfile.objects.get(user=request.user)
+            empresas = user_profile.empresa.all()
+        except UserProfile.DoesNotExist:
+            user_profile = None
+
+    context = {
+        'perfil': perfil,
+        'platos': platos,
+        'user_profile': user_profile,
+        'empresas': empresas,
+    }
+    return render(request, "public/carrito.html",context)
 
 def descrip_carro(request):
     return render(request, 'public/descrip_carrito.html')
@@ -157,39 +182,141 @@ def limpiar_carrito(request):
     return redirect("menu")
 
 
+@transaction.atomic
 def pago(request):
+    carrito = request.session.get('carrito', {})
+    
+    if not carrito:  # Verificar si el carrito está vacío
+        return render(request, 'public/carrito.html', {'error': 'No existen productos en el carrito.'})
+    
     if request.method == "POST":
         # Procesar la selección de despacho y método de pago
-        despacho = request.POST['despacho']
-        metodo_pago = request.POST['metodo_pago']
+        despacho = request.POST.get('despacho', '')
+        metodo_pago = request.POST.get('metodo_pago', '')
         
-        # Obtener los productos del carrito
-        carrito = request.session.get('carrito', {})
+        # Validar dirección si se selecciona despacho a domicilio
+        if despacho == 'domicilio':
+            direccion = request.POST.get('direccion', '')
+            if not direccion:
+                messages.error(request, 'Debes ingresar una dirección para el despacho a domicilio.')
+                return redirect('pago')
+        else:
+            direccion = None
         
-        # Guardar los detalles de la compra
-        for key, value in carrito.items():
-            producto = PlatoProveedor.objects.get(id=value['producto_id'])
-            DetalleCompra.objects.create(
-                producto=producto,
-                cantidad=value['cantidad'],
-                precio_total=value['acumulado'],
-                tipo_despacho=despacho,
-                fecha_compra=timezone.now()
-            )
+        # Verificar si el usuario está autenticado
+        if not request.user.is_authenticated:
+            messages.warning(request, 'Debes iniciar sesión para realizar una compra.')
+            return redirect('iniciosesion')  # Redirigir a la página de inicio de sesión
         
-        # Limpiar el carrito después de la compra
-        v_carrito = Carrito(request)
-        v_carrito.limpiar()
+        # Obtener el UserProfile asociado al usuario actual
+        try:
+            user_profile = request.user.userprofile
+        except UserProfile.DoesNotExist:
+            messages.error(request, 'Debes iniciar sesión antes de comprar.')
+            return redirect('iniciosesion')  # O redirigir a la página de inicio si UserProfile no existe
         
-        return redirect('confirmacion')
+        try:
+            with transaction.atomic():
+                # Validar si se paga con saldo
+                if metodo_pago == 'saldo':
+                    # Calcular el total de la compra
+                    total_compra = sum(value['acumulado'] for key, value in carrito.items())
+                    
+                    # Verificar si el saldo es suficiente
+                    if user_profile.saldo < total_compra:
+                        messages.error(request, 'Saldo insuficiente para realizar la compra.')
+                        return redirect('carrito')  # O redirigir a la página del carrito
+                    
+                    # Actualizar el saldo del usuario
+                    user_profile.saldo -= total_compra
+                    user_profile.save()
+                
+                # Guardar los detalles de la compra y actualizar el stock
+                for key, value in carrito.items():
+                    producto = PlatoProveedor.objects.get(id=value['producto_id'])
+                    cantidad_comprada = value['cantidad']
+                    precio_total = value['acumulado']
+                    
+                    # Validar si la cantidad deseada supera el stock disponible
+                    if cantidad_comprada > producto.stock:
+                        messages.error(request, f'El producto "{producto.nombre_plato}" no tiene suficiente stock disponible.')
+                        return redirect('carrito')  # O redirigir a la página del carrito
+                    
+                    # Crear el detalle de la compra
+                    DetalleCompra.objects.create(
+                        producto=producto,
+                        cantidad=cantidad_comprada,
+                        precio_total=precio_total,
+                        tipo_despacho=despacho,
+                        direccion_entrega=direccion,
+                        fecha_compra=timezone.now(),
+                        usuario=user_profile
+                    )
+                    
+                    # Actualizar el stock del producto
+                    producto.stock -= cantidad_comprada
+                    producto.save()
+                
+                # Limpiar el carrito después de la compra
+                del request.session['carrito']
+                request.session.modified = True
+                
+                return redirect('confirmacion')
+        
+        except PlatoProveedor.DoesNotExist:
+            messages.error(request, 'Uno o más productos no existen en nuestro inventario.')
+            return redirect('carrito')  # O redirigir a la página del carrito
+        
+        except Exception as e:
+            messages.error(request, f'Ocurrió un error al procesar tu compra: {str(e)}')
+            return redirect('carrito')  # O redirigir a la página del carrito
 
-    return render(request, 'public/pago.html')
+    perfil = request.session.get('perfil')
+    platos = PlatoProveedor.objects.filter(stock__gt=0, disponibilidad=True)
+    user_profile = None
+    empresas = []
+
+    if request.user.is_authenticated:
+        try:
+            user_profile = UserProfile.objects.get(user=request.user)
+            empresas = user_profile.empresa.all()
+        except UserProfile.DoesNotExist:
+            user_profile = None
+
+    context = {
+        'perfil': perfil,
+        'platos': platos,
+        'user_profile': user_profile,
+        'empresas': empresas,
+    }
+        
+    return render(request, 'public/pago.html', context)
 
 
 def confirmacion(request):
-    return render(request, 'public/confirmacion.html')
+    perfil = request.session.get('perfil')
 
 
+    platos = PlatoProveedor.objects.filter(stock__gt=0,disponibilidad=True)
+
+    user_profile = None
+    empresas = []
+
+    if request.user.is_authenticated:
+        try:
+            user_profile = UserProfile.objects.get(user=request.user)
+            empresas = user_profile.empresa.all()
+        except UserProfile.DoesNotExist:
+            user_profile = None
+
+    context = {
+        'perfil': perfil,
+        'platos': platos,
+        'user_profile': user_profile,
+        'empresas': empresas,
+    }
+
+    return render(request, 'public/confirmacion.html',context )
 
 
 
@@ -288,3 +415,6 @@ def preguntasFrecuentes(request):
         'empresas': empresas,
     }
     return render(request, 'preguntasFrecuentes.html', context)
+
+
+

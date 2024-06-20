@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% block title %}Menu | Alimentos Santiago®{% endblock %}
+
 {% block styles %}
 <link rel="stylesheet" href="{% static '/css/style-carrito.css/' %}">
 {% endblock %}
@@ -127,7 +129,7 @@
       <div class="container imagen-top">
         <div class=" col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
           <img src="{% static 'img/mesa-comida.jpg' %}" width="100%"  >
-          <hr>
+           <hr>
         </div>
       </div>
       <div class="row rectangulo">
@@ -136,11 +138,14 @@
           <div class="rectangulo-derecho sticky-top" >
               <h3>Detalles</h3>
                 {% include 'public/descrip_carrito.html' %}
-              <hr>
+              
           </div>
         </div>
         <div class="col-1"></div>
       </div>
+      
+
+      
       <!-- ENTRADAS  -->
       <div class="col-12" id="ENTRADAS">
   
@@ -162,7 +167,10 @@
                 <p class="card-text">{{ plato.descripcion }}</p>
                 <p class="card-text">$ {{ plato.precio }}</p>
                 <center><a href="{% url 'add' plato.id %}" class="btn btn-custom-purple" aria-current="page">Agregar al carrito</a></center>
-              </div>
+                
+
+              
+            </div>
             </div>
             <br>
               {% endfor %}

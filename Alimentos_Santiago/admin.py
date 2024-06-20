@@ -19,4 +19,5 @@ admin.site.register(Proveedor)
 admin.site.register(PlatoProveedor)
 admin.site.register(Empresa, EmpresaAdmin)
 admin.site.register(Repartidores)
+admin.site.register(DetalleCompra)
 

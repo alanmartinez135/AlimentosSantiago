@@ -453,3 +453,51 @@ span{
 .img-fluid{
   border-radius: 10%;
 }
+
+
+.form_pago{
+  width: 50%;
+  text-align: center; 
+  margin-left: 25%;
+  margin-left: 25%;
+}
+
+.form_carrito{
+  width: 50%;
+  margin-left: 25%;
+  margin-left: 25%;
+}
+
+.btn-danger{
+  border-radius: 20px;
+  width: 150px;
+  margin:auto;
+  margin-bottom: 10px;
+}
+
+.btn-success{
+  border-radius: 20px;
+  width: 150px;
+  margin:auto;
+  margin-bottom: 10px;
+}
+
+.btn-secondary{
+  border-radius: 20px;
+  width: 150px;
+  margin:auto;
+  margin-bottom: 10px;
+}
+
+/* .color1 {color: #62adf9;}
+   .color3 {color: #bee0ff;}
+   .color1 {color: #103548;}
+   .color1 {color: #133F57;}
+   .color1 {color: #195474;}
+   .color2 {color: #366985;}
+   .color3 {color: #537F97;}
+   .color4 {color: #6F94A8;}
+   .color5 {color: #8CAABA;}
+   .color5 {color: #A9BFCB;}
+   .color5 {color: #C6D4DC;}
+   .color5 {color: #E2EAEE;} */

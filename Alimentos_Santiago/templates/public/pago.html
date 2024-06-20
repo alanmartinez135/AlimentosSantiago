@@ -119,25 +119,57 @@
           </div>
         </div>
       </div> <!--container-fluid-->
-<form method="post" action="{% url 'pago' %}">
-    {% csrf_token %}
-    <div class="form-group">
-        <label for="despacho">Tipo de Despacho</label>
-        <select name="despacho" id="despacho" class="form-control">
-            <option value="domicilio">Domicilio</option>
-            <option value="retiro_tienda">Retiro en Tienda</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="metodo_pago">Método de Pago</label>
-        <select name="metodo_pago" id="metodo_pago" class="form-control">
-            <option value="tarjeta">Tarjeta de Crédito</option>
-            <option value="efectivo">Efectivo</option>
-            <option value="transferencia">Transferencia Bancaria</option>
-        </select>
-    </div>
-    <button type="submit" class="btn btn-custom-purple">Confirmar Pago</button>
-    
-</form>
 
+      <div class="container">
+        <div class="contenedor_pago col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <br>
+          <h3>Realizando pago</h3>
+          <hr>
+        <form method="post" action="{% url 'pago' %}" class="form_pago">
+          {% csrf_token %}
+          <br>
+          <div class="form-group">
+              <label for="despacho">Tipo de Despacho</label>
+              <select name="despacho" id="despacho" class="form-control">
+                  <option value="retiro_tienda">Retiro en Tienda</option>
+                  <option value="domicilio">Despacho a Domicilio</option>
+              </select>
+          </div>
+          <br>
+          <div id="direccion-domicilio" style="display: none;">
+              <div class="form-group">
+                  <label for="direccion">Dirección de entrega</label>
+                  <input type="text" name="direccion" id="direccion" class="form-control">
+              </div>
+          </div>
+          <br>
+          <div class="form-group">
+              <label for="metodo_pago">Método de Pago</label>
+              <select name="metodo_pago" id="metodo_pago" class="form-control">
+                  <option value="saldo">Saldo</option>
+              </select>
+          </div>
+          <br>
+          <br>
+          <button type="submit" class="btn btn-custom-purple">Confirmar Pago</button>
+          
+      </form>
+      <br>
+
+      </div>
+    </div>
+    
+    
+      <script>
+        // Mostrar campos de dirección si se selecciona "Despacho a domicilio"
+        document.getElementById('despacho').addEventListener('change', function() {
+            var option = this.value;
+            if (option === 'domicilio') {
+                document.getElementById('direccion-domicilio').style.display = 'block';
+            } else {
+                document.getElementById('direccion-domicilio').style.display = 'none';
+            }
+        });
+    </script>
+    
 {% endblock %}

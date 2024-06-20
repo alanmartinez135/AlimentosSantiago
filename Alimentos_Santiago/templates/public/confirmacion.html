@@ -120,13 +120,22 @@
         </div>
       </div> <!--container-fluid-->
 
-      <div class="alert alert-success" role="alert">
-        <h4 class="alert-heading">¡Pago Confirmado!</h4>
-        <p>Tu compra ha sido procesada exitosamente.</p>
-        <hr>
-        <p class="mb-0">Gracias por tu compra. Pronto recibirás una confirmación por correo.</p>
-    </div>
-    <a href="{% url 'menu' %}" class="btn btn-primary">Volver al menú</a>
-    
+
+
+      <div class="container form_pago">
+        <br><br>
+        <div class="alert alert-success" role="alert">
+          <h4 class="alert-heading">¡Pago Confirmado!</h4>
+          <p>Tu compra ha sido procesada exitosamente.</p>
+          <hr>
+          <p class="mb-0">Gracias por tu compra. Pronto recibirás una confirmación por correo.</p>
+      </div>
+      <br>
+      <a href="{% url 'menu' %}" class="btn btn-custom-purple">Volver al menú</a>
+  
+      <br>
+      </div>
+
+        
 
 {% endblock %}

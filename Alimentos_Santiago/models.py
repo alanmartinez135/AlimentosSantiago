@@ -10,7 +10,7 @@ class UserProfile(models.Model):
     saldo = models.IntegerField(default=0)
     role = models.CharField(max_length=9, choices=settings.ROLES)
     def __str__(self):
-        return f'{self.user.username} - {self.role}'
+        return f'{self.role}:  {self.user.username}'
     
 
 class Empresa(models.Model):
@@ -55,17 +55,20 @@ class PlatoProveedor(models.Model):
 
     def __str__(self):
         return f"{self.id} | Nombre plato : {self.nombre_plato} | Nombre proveedor : {self.proveedor.nombre} "
-    
+  
+#Se alamcenana los datos despues de comprar en la tabla detalle compra     
+
 class DetalleCompra(models.Model):
     producto = models.ForeignKey(PlatoProveedor, on_delete=models.CASCADE)
     cantidad = models.IntegerField()
     precio_total = models.DecimalField(max_digits=10, decimal_places=2)
     tipo_despacho = models.CharField(max_length=50)
+    direccion_entrega = models.CharField(max_length=255, blank=True, null=True)  # Nuevo campo para la dirección de entrega
     fecha_compra = models.DateTimeField()
+    usuario = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"Compra de {self.producto.nombre} - {self.cantidad} unidades"
-
+        return f"{self.usuario} || Producto: {self.producto.nombre_plato} || Cantidad: {self.cantidad}"
 #agregaro desde rama proveedores
 
 
